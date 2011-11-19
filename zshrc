@@ -1,3 +1,4 @@
+# -*- mode: shell-script;-*-
 export LANG=en_US.utf-8
 export PATH=$HOME/.bin:~/perl5/bin:$PATH
 export PERL5LIB=~/perl5/lib/perl5
@@ -166,7 +167,7 @@ alias rsync='rsync --progress --partial'
 alias po2db=~'/gits/po2db/po2db.pl'
 alias adb='/home/cfy/temp/android/android-sdk-linux_x86/platform-tools/adb'
 alias ss='/usr/bin/import -frame /dev/shm/screen-shot.jpg && opera /dev/shm/screen-shot.jpg'
-alias ccl='/home/cfy/temp/ccl/lx86cl64'
+# alias ccl='/home/cfy/temp/ccl/lx86cl64'
 # alias ecl='/usr/lib/ecl/ecl-original'
 # }}}1
 
