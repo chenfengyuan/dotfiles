@@ -1,0 +1,60 @@
+Xft.dpi: 100
+Xft.hinting:	1
+Xft.hintstyle:	hintfull
+Xft.lcdfilter:	lcddefault
+Xft.rgba:	rgb
+Xft.antialias:	1
+Xcursor.theme: ComixCursors-Green-Huge
+!XTerm
+XTerm*preeditType: Root
+XTerm*cursorColor: OliveDrab1 
+XTerm*background: black 
+XTerm*foreground: rgb:bb/bb/bb
+XTerm*geometry: 90x36+0+0
+XTerm*highlightColor: grey20
+XTerm*utf8:true
+XTerm*locale: true
+XTerm*utf8Title: true
+XTerm*termName:  xterm
+!XTerm*termName:  xterm-256color
+!roylez
+XTerm*scrollBar: false
+XTerm*rightScrollBar: true
+xterm*loginshell: true
+XTerm.borderLess: true
+XTerm.cursorBlink: true
+XTerm*colorUL: yellow
+XTerm*colorBD: white
+XTerm*VT100.Translations: #override \
+Ctrl <KeyPress> V: insert-selection(CLIPBOARD) \n\
+<Btn1Up>: select-end(PRIMARY) \n\
+Ctrl <KeyPress> P: print() \n
+<Key>BackSpace: string(0x7f)
+XTerm*backarrowKeyIsErase:      true
+XTerm*printerCommand: /home/exp/bin/xterm-screenshot/xterm2html.bash
+XTerm*printAttributes: 2
+XTerm*printerExtent: true
+XTerm*cursorBlink: true
+
+!XTerm*faceName:Courier 10 Pitch-13
+XTerm*faceName:DejaVu Sans Mono-13
+!xterm*faceName: Monaco-13
+!xterm*faceName: Monaco:antialias=True
+XTerm*faceNameDoublesize:Vera Sans YuanTi Mono-13
+! XTerm*faceName:DejaVu Sans Mono-13
+! XTerm*faceNameDoublesize:WenQuanYi Micro Hei-13
+! xterm*faceName: DejaVu Sans Mono:antialias=True
+! xterm*faceNameDoublesize: WenQuanYi Micro Hei  Mono:antialias=True:pixelsize=15.5
+! xterm*faceSize:     10
+
+XTerm*eightBitInput:   false
+XTerm*metaSendsEscape: true
+
+!Emacs.FontBackend: xft
+!Emacs.font:Vera Sans YuanTi Mono-13
+! XTerm*inputMethod:fcitx
+
+!Emacs.FontBackend: xft
+!Emacs*font:Vera Sans YuanTi Mono-13
+FvwmConsole*font:Vera Sans YuanTi Mono-13
+XTerm*allowTitleOps:true
