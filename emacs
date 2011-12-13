@@ -1,6 +1,6 @@
 ; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2011-11-19 12:26:55 cfy>
+;; Time-stamp: <2011-12-13 16:55:45 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -48,7 +48,7 @@
 ;;更改regexp的设置
 (setq search-whitespace-regexp "[ \t\r\n]+")
 ;;更改frame title 的显示信息
-(setq frame-title-format "%I%b")
+(setq frame-title-format "%I\t%b\temacs")
 
 ;; 光标颜色
 (set-cursor-color "green")
@@ -379,39 +379,39 @@
 ;; (erc-start)
 
 (require 'paredit)
-(define-key lisp-mode-map (kbd "(") 'paredit-open-parenthesis)
-(define-key lisp-mode-map (kbd ")") 'paredit-close-parenthesis)
+(define-key slime-mode-map (kbd "(") 'paredit-open-parenthesis)
+(define-key slime-mode-map (kbd ")") 'paredit-close-parenthesis)
 
-(define-key lisp-mode-map (kbd "\"") 'paredit-doublequote)
-(define-key lisp-mode-map (kbd "\\") 'paredit-backslash)
+(define-key slime-mode-map (kbd "\"") 'paredit-doublequote)
+(define-key slime-mode-map (kbd "\\") 'paredit-backslash)
 
-(define-key lisp-mode-map (kbd "RET") 'paredit-newline)
-(define-key lisp-mode-map (kbd "<return>") 'paredit-newline)
-(define-key lisp-mode-map (kbd "C-j") 'newline)
+(define-key slime-mode-map (kbd "RET") 'paredit-newline)
+(define-key slime-mode-map (kbd "<return>") 'paredit-newline)
+(define-key slime-mode-map (kbd "C-j") 'newline)
 
 ;;;; nb: this assumes dvorak key layout
-(define-key lisp-mode-map (kbd "M-b") 'backward-sexp)
-(define-key lisp-mode-map (kbd "M-t") 'transpose-sexps)
-(define-key lisp-mode-map (kbd "C-M-t") 'transpose-chars)
-(define-key lisp-mode-map (kbd "M-f") 'forward-sexp)
-(define-key lisp-mode-map (kbd "M-d") 'kill-sexp)
-(define-key lisp-mode-map (kbd "C-M-k") 'paredit-kill)
-(define-key lisp-mode-map (kbd "C-'") 'paredit-splice-sexp)
-(define-key lisp-mode-map (kbd "C-M-l") 'paredit-recentre-on-sexp)
-(define-key lisp-mode-map (kbd "C-,") 'paredit-backward-slurp-sexp)
-(define-key lisp-mode-map (kbd "C-.") 'paredit-forward-slurp-sexp)
-(define-key lisp-mode-map (kbd "C-<") 'paredit-backward-barf-sexp)
-(define-key lisp-mode-map (kbd "C->") 'paredit-forward-barf-sexp)
-(define-key lisp-mode-map (kbd "C-/") 'backward-up-list)
-(define-key lisp-mode-map (kbd "C-=") 'down-list)
-(define-key lisp-mode-map (kbd "TAB") 'slime-indent-and-complete-symbol)
-(define-key lisp-mode-map (kbd "C-c TAB") 'slime-complete-form)
+(define-key slime-mode-map (kbd "M-b") 'backward-sexp)
+(define-key slime-mode-map (kbd "M-t") 'transpose-sexps)
+(define-key slime-mode-map (kbd "C-M-t") 'transpose-chars)
+(define-key slime-mode-map (kbd "M-f") 'forward-sexp)
+(define-key slime-mode-map (kbd "M-d") 'kill-sexp)
+(define-key slime-mode-map (kbd "C-M-k") 'paredit-kill)
+(define-key slime-mode-map (kbd "C-'") 'paredit-splice-sexp)
+(define-key slime-mode-map (kbd "C-M-l") 'paredit-recentre-on-sexp)
+(define-key slime-mode-map (kbd "C-,") 'paredit-backward-slurp-sexp)
+(define-key slime-mode-map (kbd "C-.") 'paredit-forward-slurp-sexp)
+(define-key slime-mode-map (kbd "C-<") 'paredit-backward-barf-sexp)
+(define-key slime-mode-map (kbd "C->") 'paredit-forward-barf-sexp)
+(define-key slime-mode-map (kbd "C-/") 'backward-up-list)
+(define-key slime-mode-map (kbd "C-=") 'down-list)
+(define-key slime-mode-map (kbd "TAB") 'slime-indent-and-complete-symbol)
+(define-key slime-mode-map (kbd "C-c TAB") 'slime-complete-form)
 ;;;; this may seem strange, but i often use the C-<whatever> motion
 ;;;; commands in sequence to reformat code and having to take a finger off of control
 ;;;; to add a return is a pain
-(define-key lisp-mode-map (kbd "C-<return>") 'paredit-newline)
+(define-key slime-mode-map (kbd "C-<return>") 'paredit-newline)
 ;;;; i hate having to take my key off of ctrl for this and i don't use complete-form anyway...
-(define-key lisp-mode-map (kbd "C-c C-i") 'slime-inspect)
+(define-key slime-mode-map (kbd "C-c C-i") 'slime-inspect)
 
 (require 'highlight-parentheses)
 (define-globalized-minor-mode global-highlight-parentheses-mode
@@ -422,3 +422,7 @@
 (setq hl-paren-colors
  '("red1" "orange1" "yellow1" "green1" "cyan1"
  "slateblue1" "magenta1" "purple"))
+
+(autoload 'visual-basic-mode "visual-basic-mode" "Visual Basic mode." t)
+ (setq auto-mode-alist (append '(("\\.vbs$" .
+                                 visual-basic-mode)) auto-mode-alist))
