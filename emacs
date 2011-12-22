@@ -1,6 +1,6 @@
 ; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2011-12-13 16:55:45 cfy>
+;; Time-stamp: <2011-12-22 12:06:38 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -310,7 +310,7 @@
 (load "~/.emacs-passwd")
 (setq erc-email-userid "cfy")
 (setq erc-autojoin-channels-alist
-       '(("freenode.net" "#ubuntu-cn" "#lisp" "#qi-hardware-cn")
+       '(("freenode.net" "#ubuntu-cn" "#gentoo-cn" "#lisp-zh" "#qi-hardware-cn")
             ))
 (defun erc-start ()
   (interactive)
