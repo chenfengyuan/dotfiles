@@ -1,6 +1,6 @@
-; -*- mode: emacs-lisp;-*-
+					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2011-12-22 12:06:38 cfy>
+;; Time-stamp: <2012-01-13 20:26:24 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -65,12 +65,12 @@
 (setq make-backup-files t)
 ;; ;;默认为t
 ;; (cond ((eq system-type 'gnu/linux)      ;;为gnu/linux打开numbered backup
-        (setq backup-directory-alist
- 	     '(("." . "~/.saves")))
+(setq backup-directory-alist
+      '(("." . "~/.saves")))
 ;;        (setq version-control t)	;;打开Numbered backup
 ;;        (setq kept-new-versions 5)	;;保存5个最新的版本
 ;;        (setq delete-old-versions t)	;;打开自动删除旧的版本。
-	
+
 
 
 ;; ;;     (setq backup-by-copying-when-linked t) ;; Copy linked files, don't rename.
@@ -102,7 +102,7 @@
 ;; (autoload 'company-mode "company" nil t)
 ;;      )
 ;; )
- 
+
 
 
 
@@ -147,11 +147,11 @@
 (require 'color-theme)
 ;; for color-theme-select
 (defun color-theme-face-attr-construct (face frame)
-       (if (atom face)
-           (custom-face-attributes-get face frame)
-         (if (and (consp face) (eq (car face) 'quote))
-             (custom-face-attributes-get (cadr face) frame)
-           (custom-face-attributes-get (car face) frame))))
+  (if (atom face)
+      (custom-face-attributes-get face frame)
+    (if (and (consp face) (eq (car face) 'quote))
+	(custom-face-attributes-get (cadr face) frame)
+      (custom-face-attributes-get (car face) frame))))
 (color-theme-initialize)
 ;; (color-theme-pok-wog)
 ;; (color-theme-charcoal-black)
@@ -183,11 +183,11 @@
 
 ;; the more robust equivalent:
 (mapc
-     (lambda (pair)
-       (if (eq (cdr pair) 'perl-mode)
-           (setcdr pair 'cperl-mode)))
-     (append auto-mode-alist interpreter-mode-alist )
-     )
+ (lambda (pair)
+   (if (eq (cdr pair) 'perl-mode)
+       (setcdr pair 'cperl-mode)))
+ (append auto-mode-alist interpreter-mode-alist )
+ )
 
 ;; (cperl-set-style 'PerlStyle)
 (add-hook 'cperl-mode-hook 'cperl-mode-hook t)
@@ -209,11 +209,11 @@
        (set-fontset-font (frame-parameter nil 'font)
 			 'han (font-spec :family "Vera Sans YuanTi" :size 15))
        (set-fontset-font (frame-parameter nil 'font)
-       		  'symbol (font-spec :family "Vera Sans YuanTi" :size 15))
+			 'symbol (font-spec :family "Vera Sans YuanTi" :size 15))
        (set-fontset-font (frame-parameter nil 'font)
-       		  'cjk-misc (font-spec :family "Vera Sans YuanTi":size 15))
+			 'cjk-misc (font-spec :family "Vera Sans YuanTi":size 15))
        (set-fontset-font (frame-parameter nil 'font)
-       		  'bopomofo (font-spec :family "Vera Sans YuanTi":size 15))
+			 'bopomofo (font-spec :family "Vera Sans YuanTi":size 15))
        )
       )
 ;; ;; (set-default-font "WenQuanYi Micro hei 19")
@@ -288,7 +288,7 @@
                                   autoconf-mode makefile-automake-mode)))
 ;; turn on soft wrapping mode for org mode
 (add-hook 'org-mode-hook
-  (lambda () (setq truncate-lines nil)))
+	  (lambda () (setq truncate-lines nil)))
 
 
 
@@ -304,14 +304,43 @@
 ;;                                  "324" "329" "332" "333" "353" "477"))          
 ;; ;; don't show any of this                                                       
 ;; (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
+(defun erc-cmd-HOWMANY (&rest ignore)
+  "Display how many users (and ops) the current channel has."
+  (erc-display-message nil 'notice (current-buffer)
+		       (let ((hash-table (with-current-buffer
+					     (erc-server-buffer)
+					   erc-server-users))
+			     (users 0)
+			     (ops 0))
+			 (maphash (lambda (k v)
+				    (when (member (current-buffer)
+						  (erc-server-user-buffers v))
+				      (incf users))
+				    (when (erc-channel-user-op-p k)
+				      (incf ops)))
+				  hash-table)
+			 (format
+			  "There are %s users (%s ops) on the current channel"
+			  users ops))))
+
+(defun erc-cmd-SHOW (&rest form)
+  "Eval FORM and send the result and the original form as:FORM => (eval FORM)."
+  (let* ((form-string (mapconcat 'identity form " "))
+	 (result
+	  (condition-case err
+	      (eval (read-from-whole-string form-string))
+	    (error
+	     (format "Error: %s" error)))))
+    (erc-send-message (format "%s => %S" form-string result))))
+
 (require 'erc-services)
 (erc-services-mode 1)
 (setq erc-prompt-for-nickserv-password nil)
 (load "~/.emacs-passwd")
 (setq erc-email-userid "cfy")
 (setq erc-autojoin-channels-alist
-       '(("freenode.net" "#ubuntu-cn" "#gentoo-cn" "#lisp-zh" "#qi-hardware-cn")
-            ))
+      '(("freenode.net" "#ubuntu-cn" "#gentoo-cn" "#lisp-zh" "#qi-hardware-cn")
+	))
 (defun erc-start ()
   (interactive)
   (erc :server "irc.freenode.net" :port 6667 :nick "cfy"))
@@ -366,8 +395,8 @@
 (defun lisp-indent-or-complete(&optional arg)
   (interactive "p")
   (if (or (looking-back "^\\s-*")(bolp))
-     (call-interactively 'lisp-indent-line)
-     (call-interactively 'slime-indent-and-complete-symbol)))
+      (call-interactively 'lisp-indent-line)
+    (call-interactively 'slime-indent-and-complete-symbol)))
 (eval-after-load "lisp-mode"
   '(progn
      (define-key lisp-mode-map (kbd "TAB") 'lisp-indent-or-complete)))
@@ -420,9 +449,9 @@
     (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode t)
 (setq hl-paren-colors
- '("red1" "orange1" "yellow1" "green1" "cyan1"
- "slateblue1" "magenta1" "purple"))
+      '("red1" "orange1" "yellow1" "green1" "cyan1"
+	"slateblue1" "magenta1" "purple"))
 
 (autoload 'visual-basic-mode "visual-basic-mode" "Visual Basic mode." t)
- (setq auto-mode-alist (append '(("\\.vbs$" .
+(setq auto-mode-alist (append '(("\\.vbs$" .
                                  visual-basic-mode)) auto-mode-alist))
