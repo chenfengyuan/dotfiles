@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-01-24 19:04:32 cfy>
+;; Time-stamp: <2012-01-24 21:36:28 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -455,3 +455,6 @@
 (autoload 'visual-basic-mode "visual-basic-mode" "Visual Basic mode." t)
 (setq auto-mode-alist (append '(("\\.vbs$" .
                                  visual-basic-mode)) auto-mode-alist))
+;;; ace-jump-mode
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
