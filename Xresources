@@ -1,4 +1,4 @@
-Xft.dpi: 100
+Xft.dpi: 96
 Xft.hinting:	1
 Xft.hintstyle:	hintfull
 Xft.lcdfilter:	lcddefault
@@ -10,7 +10,7 @@ XTerm*preeditType: Root
 XTerm*cursorColor: OliveDrab1 
 XTerm*background: black 
 XTerm*foreground: rgb:bb/bb/bb
-XTerm*geometry: 90x36+0+0
+XTerm*geometry: 80x24+0+0
 XTerm*highlightColor: grey20
 XTerm*utf8:true
 XTerm*locale: true
@@ -37,10 +37,10 @@ XTerm*printerExtent: true
 XTerm*cursorBlink: true
 
 !XTerm*faceName:Courier 10 Pitch-13
-XTerm*faceName:DejaVu Sans Mono-13
+XTerm*faceName:DejaVu Sans Mono-12
 !xterm*faceName: Monaco-13
 !xterm*faceName: Monaco:antialias=True
-XTerm*faceNameDoublesize:Vera Sans YuanTi Mono-13
+XTerm*faceNameDoublesize:WenQuanYi Zen Hei Mono-12
 ! XTerm*faceName:DejaVu Sans Mono-13
 ! XTerm*faceNameDoublesize:WenQuanYi Micro Hei-13
 ! xterm*faceName: DejaVu Sans Mono:antialias=True
@@ -52,9 +52,9 @@ XTerm*metaSendsEscape: true
 
 !Emacs.FontBackend: xft
 !Emacs.font:Vera Sans YuanTi Mono-13
-! XTerm*inputMethod:fcitx
+!XTerm*inputMethod:fcitx
 
 !Emacs.FontBackend: xft
 !Emacs*font:Vera Sans YuanTi Mono-13
-FvwmConsole*font:Vera Sans YuanTi Mono-13
+!FvwmConsole*font:Vera Sans YuanTi Mono-13
 XTerm*allowTitleOps:true
