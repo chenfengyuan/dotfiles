@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-01-24 21:36:28 cfy>
+;; Time-stamp: <2012-01-25 19:00:13 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -204,19 +204,18 @@
 (setq c-auto-newline t)
 
 ;; 字体
-(cond ((eq system-type 'gnu/linux)
-       (set-frame-font "DejaVu Sans Mono:pixelsize=15" )
-       (set-fontset-font (frame-parameter nil 'font)
-			 'han (font-spec :family "Vera Sans YuanTi" :size 15))
-       (set-fontset-font (frame-parameter nil 'font)
-			 'symbol (font-spec :family "Vera Sans YuanTi" :size 15))
-       (set-fontset-font (frame-parameter nil 'font)
-			 'cjk-misc (font-spec :family "Vera Sans YuanTi":size 15))
-       (set-fontset-font (frame-parameter nil 'font)
-			 'bopomofo (font-spec :family "Vera Sans YuanTi":size 15))
-       )
-      )
-;; ;; (set-default-font "WenQuanYi Micro hei 19")
+(defun set-font (font size)
+  (set-fontset-font (frame-parameter nil 'font)
+		    'han (font-spec :family font  :size size))
+  (set-fontset-font (frame-parameter nil 'font)
+		    'symbol (font-spec :family font  :size size))
+  (set-fontset-font (frame-parameter nil 'font)
+		    'cjk-misc (font-spec :family font :size size))
+  (set-fontset-font (frame-parameter nil 'font)
+		    'bopomofo (font-spec :family font :size size)))
+(set-frame-font "DejaVu Sans Mono:pixelsize=15")
+(set-font "WenQuanYi Micro Hei" 15)
+;; ;; (set-default-font "WenQuanYi Micro hei 15")
 
 
 
