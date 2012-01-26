@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-01-25 19:00:13 cfy>
+;; Time-stamp: <2012-01-26 17:34:59 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -343,6 +343,11 @@
 (defun erc-start ()
   (interactive)
   (erc :server "irc.freenode.net" :port 6667 :nick "cfy"))
+(require 'erc-log)
+(setq erc-log-file-coding-system 'utf-8)
+(setq erc-log-channels-directory "~/.irc-logs/") ; must be writable
+(erc-log-enable)
+
 ;; (require 'tls)
 ;; (defun start-irc ()
 ;;    "Connect to IRC."
