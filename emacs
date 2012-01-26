@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-01-26 17:34:59 cfy>
+;; Time-stamp: <2012-01-26 23:24:58 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -462,3 +462,6 @@
 ;;; ace-jump-mode
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+;;; enable primary selection in emacs24
+(setq x-select-enable-primary t)
