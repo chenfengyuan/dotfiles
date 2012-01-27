@@ -195,17 +195,6 @@ CYAN='[01;36m'
 WHITE='[01;37m'
 UNDERLINE='[04m'
 
-header()
-{
-  begin_str=">>>"
-  end_str=">>>"
-  banner="debian"
-  length=$((${COLUMNS} - 1 - ${#begin_str} - ${#end_str} - ${#banner} - 2))
-  half=$(($length / 2))
-  line=`printf '%*s' $half`
-  echo -en "%{\e${RED}%}${begin_str}\e${WHITE}${line// /-}[\e${MAGENTA}${banner}\e${WHITE}]${line// /-}\e${RED}${end_str}\e${RESET}"
-}
-
 get_hg_repos_id()
 {
   hg id -bint 2> /dev/null
@@ -251,7 +240,7 @@ colors
 
 typeset -ga chpwd_functions
 chpwd_functions+='get_repos_info'
-export PROMPT="$(header)$(my_prompt)"
+export PROMPT="$(my_prompt)"
 
 MAIL=/var/spool/mail/ray && export MAIL
 
