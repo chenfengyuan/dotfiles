@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-01-27 20:42:02 cfy>
+;; Time-stamp: <2012-01-29 11:30:28 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -345,12 +345,14 @@
   (erc :server "irc.freenode.net" :port 6667 :nick "cfy"))
 (require 'erc-log)
 (setq erc-log-file-coding-system 'utf-8)
+(setq erc-enable-logging 'erc-log-all-but-server-buffers)
 (setq erc-log-channels-directory
       (concat "~/.irc-logs/"
-	      (format-time-string "%Y%m" (current-time))
+	      (format-time-string "%Y%m%d" (current-time))
 	      "/")) ; must be writable
 (erc-log-enable)
-
+(require 'erc-view-log)
+(add-to-list 'auto-mode-alist '("~/\\.irc-logs/.*\\.txt" . erc-view-log-mode))
 ;; (require 'tls)
 ;; (defun start-irc ()
 ;;    "Connect to IRC."
@@ -398,6 +400,12 @@
 (defun ccl()
   (interactive)
   (slime-start* '(:name "ccl" :program "ccl" :program-args ("-K" "utf-8"))))
+
+;;; sbcl
+(defun sbcl()
+  (interactive)
+  (slime-start* '(:name "sbcl" :program "/home/cfy/.bin/sbcl")))
+
 ;; slime tab indent
 (defun lisp-indent-or-complete(&optional arg)
   (interactive "p")
