@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-01-29 11:30:28 cfy>
+;; Time-stamp: <2012-01-29 22:22:01 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -353,6 +353,19 @@
 (erc-log-enable)
 (require 'erc-view-log)
 (add-to-list 'auto-mode-alist '("~/\\.irc-logs/.*\\.txt" . erc-view-log-mode))
+
+;; ;;; erc nick highlight
+;; (and
+;;      (load-library "erc-highlight-nicknames")
+;;      (add-to-list 'erc-modules 'highlight-nicknames)
+;;      (erc-update-modules))
+     
+;;; erc nick notify
+(autoload 'erc-nick-notify-mode "erc-nick-notify"
+  "Minor mode that calls `erc-nick-notify-cmd' when his nick gets
+mentioned in an erc channel" t)
+(eval-after-load 'erc '(erc-nick-notify-mode t))
+
 ;; (require 'tls)
 ;; (defun start-irc ()
 ;;    "Connect to IRC."
@@ -476,3 +489,10 @@
 
 ;;; enable primary selection in emacs24
 (setq x-select-enable-primary t)
+
+;;; elpa
+(require 'package)
+(add-to-list 'package-archives
+	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("marmalade"
+	 . "http://marmalade-repo.org/packages/") t)
