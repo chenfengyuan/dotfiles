@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-01-29 22:22:01 cfy>
+;; Time-stamp: <2012-01-30 21:15:27 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -214,7 +214,7 @@
   (set-fontset-font (frame-parameter nil 'font)
 		    'bopomofo (font-spec :family font :size size)))
 (set-frame-font "DejaVu Sans Mono:pixelsize=15")
-(set-font "WenQuanYi Micro Hei" 15)
+(set-font "Vera Sans YuanTi Mono" 15)
 ;; ;; (set-default-font "WenQuanYi Micro hei 15")
 
 
