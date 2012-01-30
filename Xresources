@@ -40,7 +40,7 @@ XTerm*cursorBlink: true
 XTerm*faceName:DejaVu Sans Mono-12
 !xterm*faceName: Monaco-13
 !xterm*faceName: Monaco:antialias=True
-XTerm*faceNameDoublesize:WenQuanYi Zen Hei Mono-12
+XTerm*faceNameDoublesize:Vera Sans YuanTi Mono-12
 ! XTerm*faceName:DejaVu Sans Mono-13
 ! XTerm*faceNameDoublesize:WenQuanYi Micro Hei-13
 ! xterm*faceName: DejaVu Sans Mono:antialias=True
