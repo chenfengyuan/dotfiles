@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-01-30 21:15:27 cfy>
+;; Time-stamp: <2012-01-31 18:23:43 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -50,8 +50,8 @@
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
 
-;; 光标颜色
-(set-cursor-color "green")
+;; ;; 光标颜色
+;; (set-cursor-color "green")
 ;;光标靠近鼠标时，鼠标自动让开
 ;; (mouse-avoidance-mode 'animate)
 
@@ -143,20 +143,20 @@
                 (joc-dired-single-buffer "..")))))
 
 
-;; color-theme
-(require 'color-theme)
-;; for color-theme-select
-(defun color-theme-face-attr-construct (face frame)
-  (if (atom face)
-      (custom-face-attributes-get face frame)
-    (if (and (consp face) (eq (car face) 'quote))
-	(custom-face-attributes-get (cadr face) frame)
-      (custom-face-attributes-get (car face) frame))))
-(color-theme-initialize)
-;; (color-theme-pok-wog)
-;; (color-theme-charcoal-black)
-;;(color-theme-sitaramv-nt)
-(color-theme-infodoc)
+;; ;; color-theme
+;; (require 'color-theme)
+;; ;; for color-theme-select
+;; (defun color-theme-face-attr-construct (face frame)
+;;   (if (atom face)
+;;       (custom-face-attributes-get face frame)
+;;     (if (and (consp face) (eq (car face) 'quote))
+;; 	(custom-face-attributes-get (cadr face) frame)
+;;       (custom-face-attributes-get (car face) frame))))
+;; (color-theme-initialize)
+;; ;; (color-theme-pok-wog)
+;; ;; (color-theme-charcoal-black)
+;; ;;(color-theme-sitaramv-nt)
+;; (color-theme-infodoc)
 
 ;; igrep
 (autoload 'igrep "igrep"
@@ -204,17 +204,27 @@
 (setq c-auto-newline t)
 
 ;; 字体
-(defun set-font (font size)
-  (set-fontset-font (frame-parameter nil 'font)
-		    'han (font-spec :family font  :size size))
-  (set-fontset-font (frame-parameter nil 'font)
-		    'symbol (font-spec :family font  :size size))
-  (set-fontset-font (frame-parameter nil 'font)
-		    'cjk-misc (font-spec :family font :size size))
-  (set-fontset-font (frame-parameter nil 'font)
-		    'bopomofo (font-spec :family font :size size)))
+;; (defun set-font (font size)
+;;   (set-fontset-font (frame-parameter nil 'font)
+;; 		    'han (font-spec :family font  :size size))
+;;   (set-fontset-font (frame-parameter nil 'font)
+;; 		    'symbol (font-spec :family font  :size size))
+;;   (set-fontset-font (frame-parameter nil 'font)
+;; 		    'cjk-misc (font-spec :family font :size size))
+;;   (set-fontset-font (frame-parameter nil 'font)
+;; 		    'bopomofo (font-spec :family font :size size)))
+;; (set-frame-font "monofur:pixelsize=20")
+;; (set-fontset-font (frame-parameter nil 'font)
+;; 		    'han (font-spec :family "Heiti SC Light"))
+(mapc
+ (lambda (face)
+   (set-face-attribute face nil :weight 'normal :underline nil))
+ (face-list))
 (set-frame-font "DejaVu Sans Mono:pixelsize=15")
-(set-font "Vera Sans YuanTi Mono" 15)
+(set-fontset-font (frame-parameter nil 'font)
+		    'han (font-spec :family "vera Sans YuanTi Mono"))
+;; (set-frame-font "DejaVu Sans Mono:pixelsize=15")
+;; (set-font "Vera Sans YuanTi Mono" 15)
 ;; ;; (set-default-font "WenQuanYi Micro hei 15")
 
 
@@ -338,7 +348,9 @@
 (load "~/.emacs-passwd")
 (setq erc-email-userid "cfy")
 (setq erc-autojoin-channels-alist
-      '(("freenode.net" "#ubuntu-cn" "#gentoo-cn" "#lisp-zh" "#qi-hardware-cn")))
+      '(("freenode.net"
+	 "#ubuntu-cn" "#gentoo-cn" "#lisp-zh" 
+	 "#qi-hardware-cn")))
 (setq erc-autojoin-timing 'ident)
 (defun erc-start ()
   (interactive)
@@ -496,3 +508,21 @@ mentioned in an erc channel" t)
 	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("marmalade"
 	 . "http://marmalade-repo.org/packages/") t)
+
+;;; active savehist mode
+(savehist-mode t)
+
+;;;
+(require 'zenburn-theme)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(erc-current-nick-face ((t (:foreground "#B80049")))))
