@@ -1,14 +1,13 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-01-31 18:23:43 cfy>
+;; Time-stamp: <2012-02-02 20:10:20 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
        (add-to-list 'load-path "~/.lisp")
-       (add-to-list 'load-path "~/quicklisp/dists/quicklisp/software/slime-20111105-cvs")
+       ;; (load (expand-file-name "~/quicklisp/slime-helper.el"))
        )
-      ((eq system-type 'windows-nt)
-       ))
+      ((eq system-type 'windows-nt)))
 
 ;;补全
 ;;在auto-complete不能不全的地方使用
@@ -223,6 +222,8 @@
 (set-frame-font "DejaVu Sans Mono:pixelsize=15")
 (set-fontset-font (frame-parameter nil 'font)
 		    'han (font-spec :family "vera Sans YuanTi Mono"))
+(set-fontset-font (frame-parameter nil 'font)
+		  'cjk-misc (font-spec :family "vera Sans YuanTi Mono"))
 ;; (set-frame-font "DejaVu Sans Mono:pixelsize=15")
 ;; (set-font "Vera Sans YuanTi Mono" 15)
 ;; ;; (set-default-font "WenQuanYi Micro hei 15")
