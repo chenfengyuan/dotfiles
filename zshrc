@@ -169,6 +169,7 @@ alias adb='/home/cfy/temp/android/android-sdk-linux_x86/platform-tools/adb'
 alias ss='/usr/bin/import -frame /dev/shm/screen-shot.jpg && opera /dev/shm/screen-shot.jpg'
 alias matlab='~/.local/MATLAB/R2011a/bin/matlab'
 alias sbcl="rlwrap ~/.bin/sbcl"
+alias tar="tar --owner 0 --group 0"
 # alias ccl='/home/cfy/temp/ccl/lx86cl64'
 # alias ecl='/usr/lib/ecl/ecl-original'
 # }}}1
