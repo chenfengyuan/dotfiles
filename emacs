@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-02-02 20:10:20 cfy>
+;; Time-stamp: <2012-02-05 09:59:46 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -483,15 +483,15 @@ mentioned in an erc channel" t)
 ;;;; i hate having to take my key off of ctrl for this and i don't use complete-form anyway...
 (define-key slime-mode-map (kbd "C-c C-i") 'slime-inspect)
 
-(require 'highlight-parentheses)
-(define-globalized-minor-mode global-highlight-parentheses-mode
-  highlight-parentheses-mode
-  (lambda ()
-    (highlight-parentheses-mode t)))
-(global-highlight-parentheses-mode t)
-(setq hl-paren-colors
-      '("red1" "orange1" "yellow1" "green1" "cyan1"
-	"slateblue1" "magenta1" "purple"))
+;; (require 'highlight-parentheses)
+;; (define-globalized-minor-mode global-highlight-parentheses-mode
+;;   highlight-parentheses-mode
+;;   (lambda ()
+;;     (highlight-parentheses-mode t)))
+;; (global-highlight-parentheses-mode t)
+;; (setq hl-paren-colors
+;;       '("red1" "orange1" "yellow1" "green1" "cyan1"
+;; 	"slateblue1" "magenta1" "purple"))
 
 (autoload 'visual-basic-mode "visual-basic-mode" "Visual Basic mode." t)
 (setq auto-mode-alist (append '(("\\.vbs$" .
