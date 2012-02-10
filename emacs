@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-02-05 10:14:33 cfy>
+;; Time-stamp: <2012-02-08 19:03:54 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -528,11 +528,18 @@ mentioned in an erc channel" t)
  ;; If there is more than one, they won't work right.
  '(erc-current-nick-face ((t (:foreground "#B80049")))))
 
-;;; fast-paren-mode
-(require 'fast-paren-mode)
+;; ;;; fast-paren-mode
+;; (require 'fast-paren-mode)
 
-(add-hook 'lisp-mode-hook  'turn-on-fast-paren-mode)
-(add-hook 'emacs-lisp-mode-hook 'turn-on-fast-paren-mode)
-(add-hook 'ielm-mode-hook  'turn-on-fast-paren-mode)
-(add-hook 'lisp-interaction-mode-hook 'turn-on-fast-paren-mode)
-(add-hook 'slime-repl-mode-hook       'turn-on-fast-paren-mode)
+;; (add-hook 'lisp-mode-hook  'turn-on-fast-paren-mode)
+;; (add-hook 'emacs-lisp-mode-hook 'turn-on-fast-paren-mode)
+;; (add-hook 'ielm-mode-hook  'turn-on-fast-paren-mode)
+;; (add-hook 'lisp-interaction-mode-hook 'turn-on-fast-paren-mode)
+;; (add-hook 'slime-repl-mode-hook       'turn-on-fast-paren-mode)
+;; ;; 在调用slime-space之前先插入fast-paren-space
+;; (defadvice slime-space (before slime-space-and-fast-paren ())
+;;   (fast-paren-space))
+;; ;; 在调用slime-space之后，因为slime-space始终会插入一个多余空格，所以需要删去一个
+;; (defadvice slime-space (after slime-space-backward ())
+;;   (backward-delete-char 1))
+;; (ad-activate 'slime-space)
