@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-02-08 19:03:54 cfy>
+;; Time-stamp: <2012-02-11 19:07:16 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -239,6 +239,8 @@
 (setq epa-file-cache-passphrase-for-symmetric-encryption t)
 ;; 允许自动保存
 (setq epa-file-inhibit-auto-save nil)
+;; epa只能用gnupg 1.0
+(setq epg-gpg-program "~/.bin/gpg")
 
 ;;; ccrypt，需要安装 ccrypt 包
 ;;(require 'jka-compr-ccrypt)
@@ -251,10 +253,16 @@
 ;;       auto-mode-alist (cons '("\\.jl$"         . sawfish-mode) auto-mode-alist)
 ;;       auto-mode-alist (cons '("\\.sawfish/rc$" . sawfish-mode) auto-mode-alist))
 
-;;set the default browser
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "opera")
+;; ;;set opera as the default browser 
+;; (setq browse-url-browser-function 'browse-url-generic
+;;       browse-url-generic-program "opera")
 
+;;; set w3m as the default browser
+(setq browse-url-browser-function 'w3m-browse-url)
+(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+ ;; optional keyboard short-cut
+(global-set-key "\C-xm" 'browse-url-at-point)
+(setq w3m-use-cookies t)
 
 ;;linum-mode
 (global-linum-mode t) 
@@ -430,7 +438,7 @@ mentioned in an erc channel" t)
 ;;; sbcl
 (defun sbcl()
   (interactive)
-  (slime-start* '(:name "sbcl" :program "/home/cfy/.bin/sbcl")))
+  (slime-start* '(:name "sbcl" :program "/home/cfy/.bin/sbcl" :program-args ("--no-sysinit"))))
 
 ;; slime tab indent
 (defun lisp-indent-or-complete(&optional arg)
@@ -520,7 +528,7 @@ mentioned in an erc channel" t)
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(org-agenda-files (quote ("~/orgs/misc.org" "~/orgs/qa.org" "~/orgs/install_gentoo.org" "~/orgs/todo.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -543,3 +551,10 @@ mentioned in an erc channel" t)
 ;; (defadvice slime-space (after slime-space-backward ())
 ;;   (backward-delete-char 1))
 ;; (ad-activate 'slime-space)
+
+;; Set to the location of your Org files on your local system
+(setq org-directory "~/orgs")
+;; Set to the name of the file where new notes will be stored
+(setq org-mobile-inbox-for-pull "~/orgs/flagged.org")
+;; Set to <your Dropbox root directory>/MobileOrg.
+(setq org-mobile-directory "~/MobileOrg")
