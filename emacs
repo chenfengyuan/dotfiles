@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-02-11 19:07:16 cfy>
+;; Time-stamp: <2012-02-16 14:24:24 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -439,6 +439,11 @@ mentioned in an erc channel" t)
 (defun sbcl()
   (interactive)
   (slime-start* '(:name "sbcl" :program "/home/cfy/.bin/sbcl" :program-args ("--no-sysinit"))))
+
+;;; allgero cl
+(defun acl()
+  (interactive)
+  (slime-start* '(:program "/home/cfy/.acl82/alisp")))
 
 ;; slime tab indent
 (defun lisp-indent-or-complete(&optional arg)
