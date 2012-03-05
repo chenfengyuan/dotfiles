@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-02-16 14:24:24 cfy>
+;; Time-stamp: <2012-02-17 07:37:49 cfy>
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -400,7 +400,7 @@ mentioned in an erc channel" t)
 ;; (setq inferior-lisp-program "/usr/bin/sbcl")
 (setq inferior-lisp-program "ccl -K utf-8"
       slime-net-coding-system 'utf-8-unix
-      common-lisp-hyperspec-root "file:///usr/share/doc/hyperspec-7.0/HyperSpec/")
+      common-lisp-hyperspec-root "file:///usr/share/doc/hyperspec-7.0-r2/HyperSpec/")
 (require 'slime)
 
 ;; (autoload 'dictionary-search "dictionary"
@@ -443,7 +443,7 @@ mentioned in an erc channel" t)
 ;;; allgero cl
 (defun acl()
   (interactive)
-  (slime-start* '(:program "/home/cfy/.acl82/alisp")))
+  (slime-start* '(:program "/home/cfy/.acl81.64/alisp")))
 
 ;; slime tab indent
 (defun lisp-indent-or-complete(&optional arg)
