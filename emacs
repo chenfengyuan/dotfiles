@@ -1,6 +1,9 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-02-17 07:37:49 cfy>
+;; Time-stamp: <2012-03-18 11:08:20 cfy>
+
+;;更改frame title 的显示信息
+(setq frame-title-format "%I\t%b\temacs")
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
@@ -46,8 +49,6 @@
 (global-set-key (kbd "C-S-s") 'isearch-forward-word)
 ;;更改regexp的设置
 (setq search-whitespace-regexp "[ \t\r\n]+")
-;;更改frame title 的显示信息
-(setq frame-title-format "%I\t%b\temacs")
 
 ;; ;; 光标颜色
 ;; (set-cursor-color "green")
