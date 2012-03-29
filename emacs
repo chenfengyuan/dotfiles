@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-03-18 11:08:20 cfy>
+;; Time-stamp: <2012-03-24 11:32:37 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
@@ -200,7 +200,10 @@
 ;; (setq cperl-electric-keywords t)
 
 ;; c/l mode
-(setq c-default-style "linux")
+(setq c-default-style
+      '((java-mode . "java")
+       (awk-mode . "awk")
+       (other . "linux")))
 (setq c-auto-newline t)
 
 ;; 字体
