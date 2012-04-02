@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-03-24 11:32:37 cfy>
+;; Time-stamp: <2012-04-01 13:10:59 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
@@ -144,6 +144,8 @@
 
 
 ;; ;; color-theme
+(color-theme-initialize)
+(color-theme-charcoal-black)
 ;; (require 'color-theme)
 ;; ;; for color-theme-select
 ;; (defun color-theme-face-attr-construct (face frame)
@@ -192,8 +194,7 @@
 ;; (cperl-set-style 'PerlStyle)
 (add-hook 'cperl-mode-hook 'cperl-mode-hook t)
 (defun cperl-mode-hook()
-  (cperl-set-style "PerlStyle")
-  )
+  (cperl-set-style "PerlStyle"))
 ;; cperl indent
 (setq cperl-auto-newline t)
 (setq cperl-electric-paren t)
@@ -521,29 +522,33 @@ mentioned in an erc channel" t)
 (setq x-select-enable-primary t)
 
 ;;; elpa
-(require 'package)
-(add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives '("marmalade"
-	 . "http://marmalade-repo.org/packages/") t)
+(if (eq emacs-major-version 24)
+    (progn (require 'package)
+	   (add-to-list 'package-archives
+			'("marmalade" . "http://marmalade-repo.org/packages/") t)
+	   (add-to-list 'package-archives '("marmalade"
+					    . "http://marmalade-repo.org/packages/") t)))
 
 ;;; active savehist mode
 (savehist-mode t)
 
 ;;;
-(require 'zenburn-theme)
+(if (eq emacs-major-version 24)
+    (require 'zenburn-theme))
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(ecb-options-version "2.40")
+ '(ecb-source-path (quote (("/" "/") "/home/cfy/gits/source-code-for-atmega128a/voltmeter")))
  '(org-agenda-files (quote ("~/orgs/misc.org" "~/orgs/qa.org" "~/orgs/install_gentoo.org" "~/orgs/todo.org"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(erc-current-nick-face ((t (:foreground "#B80049")))))
+;; (custom-set-faces
+;;   ;; custom-set-faces was added by Custom.
+;;   ;; If you edit it by hand, you could mess it up, so be careful.
+;;   ;; Your init file should contain only one such instance.
+;;   ;; If there is more than one, they won't work right.
+;;  '(erc-current-nick-face ((t (:foreground "#B80049")))))
 
 ;; ;;; fast-paren-mode
 ;; (require 'fast-paren-mode)
@@ -567,3 +572,7 @@ mentioned in an erc channel" t)
 (setq org-mobile-inbox-for-pull "~/orgs/flagged.org")
 ;; Set to <your Dropbox root directory>/MobileOrg.
 (setq org-mobile-directory "~/MobileOrg")
+
+;;; ecb
+(if (eq emacs-major-version 23)
+    (require 'ecb))
