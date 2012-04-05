@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-05 12:18:43 cfy>
+;; Time-stamp: <2012-04-05 22:09:56 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
@@ -545,7 +545,7 @@ mentioned in an erc channel" t)
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (ir-black)))
+ '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes (quote ("986ffc89942d29287982e1066784dbdf3bc6740adec6886b200f41922ae84852" "669feb4d768dcc48feaf1d9c6156d29a587949fd44c0f87121443115de2c265e" "36afe64261e1de73fcfadedf154e4bc2c9ec1969bde0c21798d31366897bc4d2" default)))
  '(org-agenda-files (quote ("~/orgs/misc.org" "~/orgs/qa.org" "~/orgs/install_gentoo.org" "~/orgs/todo.org"))))
 
