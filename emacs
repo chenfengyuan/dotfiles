@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-01 13:10:59 cfy>
+;; Time-stamp: <2012-04-05 11:54:00 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
@@ -11,6 +11,9 @@
        ;; (load (expand-file-name "~/quicklisp/slime-helper.el"))
        )
       ((eq system-type 'windows-nt)))
+
+;;; ir-black theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/ir-black-theme-1.0/")
 
 ;;补全
 ;;在auto-complete不能不全的地方使用
@@ -144,8 +147,10 @@
 
 
 ;; ;; color-theme
-(color-theme-initialize)
-(color-theme-charcoal-black)
+(if (eq emacs-major-version 25)
+    (progn 
+      (color-theme-initialize)
+      (color-theme-charcoal-black)))
 ;; (require 'color-theme)
 ;; ;; for color-theme-select
 ;; (defun color-theme-face-attr-construct (face frame)
@@ -533,22 +538,22 @@ mentioned in an erc channel" t)
 (savehist-mode t)
 
 ;;;
-(if (eq emacs-major-version 24)
+(if (eq emacs-major-version 25)
     (require 'zenburn-theme))
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(ecb-options-version "2.40")
- '(ecb-source-path (quote (("/" "/") "/home/cfy/gits/source-code-for-atmega128a/voltmeter")))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (ir-black)))
+ '(custom-safe-themes (quote ("986ffc89942d29287982e1066784dbdf3bc6740adec6886b200f41922ae84852" "669feb4d768dcc48feaf1d9c6156d29a587949fd44c0f87121443115de2c265e" "36afe64261e1de73fcfadedf154e4bc2c9ec1969bde0c21798d31366897bc4d2" default)))
  '(org-agenda-files (quote ("~/orgs/misc.org" "~/orgs/qa.org" "~/orgs/install_gentoo.org" "~/orgs/todo.org"))))
-;; (custom-set-faces
-;;   ;; custom-set-faces was added by Custom.
-;;   ;; If you edit it by hand, you could mess it up, so be careful.
-;;   ;; Your init file should contain only one such instance.
-;;   ;; If there is more than one, they won't work right.
-;;  '(erc-current-nick-face ((t (:foreground "#B80049")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(erc-current-nick-face ((t (:foreground "#B80049"))) t))
 
 ;; ;;; fast-paren-mode
 ;; (require 'fast-paren-mode)
@@ -572,7 +577,3 @@ mentioned in an erc channel" t)
 (setq org-mobile-inbox-for-pull "~/orgs/flagged.org")
 ;; Set to <your Dropbox root directory>/MobileOrg.
 (setq org-mobile-directory "~/MobileOrg")
-
-;;; ecb
-(if (eq emacs-major-version 23)
-    (require 'ecb))
