@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-05 22:09:56 cfy>
+;; Time-stamp: <2012-04-05 22:25:10 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
@@ -263,16 +263,17 @@
 ;;       auto-mode-alist (cons '("\\.jl$"         . sawfish-mode) auto-mode-alist)
 ;;       auto-mode-alist (cons '("\\.sawfish/rc$" . sawfish-mode) auto-mode-alist))
 
-;; ;;set opera as the default browser 
-;; (setq browse-url-browser-function 'browse-url-generic
-;;       browse-url-generic-program "opera")
+;;set opera as the default browser 
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "opera")
 
-;;; set w3m as the default browser
-(setq browse-url-browser-function 'w3m-browse-url)
-(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
- ;; optional keyboard short-cut
+;; ;;; set w3m as the default browser
+;; (setq browse-url-browser-function 'w3m-browse-url)
+;; (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+;;  ;; optional keyboard short-cut
+;; (setq w3m-use-cookies t)
+
 (global-set-key "\C-xm" 'browse-url-at-point)
-(setq w3m-use-cookies t)
 
 ;;linum-mode
 (global-linum-mode t) 
