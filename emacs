@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-05 22:25:10 cfy>
+;; Time-stamp: <2012-04-16 09:31:22 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
@@ -409,7 +409,7 @@ mentioned in an erc channel" t)
 
 
 ;; (setq inferior-lisp-program "/usr/bin/sbcl")
-(setq inferior-lisp-program "ccl -K utf-8"
+(setq inferior-lisp-program "/home/cfy/.bin/sbcl --no-sysinit"
       slime-net-coding-system 'utf-8-unix
       common-lisp-hyperspec-root "file:///usr/share/doc/hyperspec-7.0-r2/HyperSpec/")
 (require 'slime)
@@ -572,3 +572,6 @@ mentioned in an erc channel" t)
 (setq org-mobile-inbox-for-pull "~/orgs/flagged.org")
 ;; Set to <your Dropbox root directory>/MobileOrg.
 (setq org-mobile-directory "~/MobileOrg")
+
+;;; disable scrool bar
+(scroll-bar-mode -1)
