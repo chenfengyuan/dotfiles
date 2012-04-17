@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-16 14:32:09 cfy>
+;; Time-stamp: <2012-04-17 12:55:24 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
@@ -575,3 +575,7 @@ mentioned in an erc channel" t)
 
 ;;; disable scrool bar
 (scroll-bar-mode -1)
+
+;;; zone
+(require 'zone)
+(zone-when-idle (* 60 3))
