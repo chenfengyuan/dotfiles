@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-17 12:55:24 cfy>
+;; Time-stamp: <2012-04-22 23:51:48 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
@@ -277,7 +277,8 @@
 (global-set-key "\C-xm" 'browse-url-at-point)
 
 ;;linum-mode
-(global-linum-mode t) 
+;; global-linum-mode slow emcas down
+;; (global-linum-mode t)
 
 ;;cursor
 (blink-cursor-mode nil)
