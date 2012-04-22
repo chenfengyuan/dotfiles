@@ -13,7 +13,8 @@
       ((eq system-type 'windows-nt)))
 
 ;;; ir-black theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/ir-black-theme-1.0/")
+(if (eq emacs-major-version 24)
+    (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/ir-black-theme-1.0/"))
 
 ;;补全
 ;;在auto-complete不能不全的地方使用
