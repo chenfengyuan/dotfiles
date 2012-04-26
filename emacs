@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-26 14:15:44 cfy>
+;; Time-stamp: <2012-04-26 21:28:20 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
@@ -589,3 +589,28 @@ mentioned in an erc channel" t)
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;;; erc say Hello
+(defvar *sh-nicks* (make-hash-table :test 'equal))
+(defvar *sh-channel* "#ubuntu-cn")
+(defvar *sh-nicks-file* "~/.lisp/say-hello.nicks")
+(defvar *sh-previous-sent-time* 0)
+(defun say-hello ()
+  (goto-char (point-min))
+  (when (and (string= (buffer-name) *sh-channel*)
+	     (ignore-errors (re-search-forward "^*** \\([^(]+\\) (~?\\([^@]+\\)@.*joined" nil t)))
+    (let ((str (gethash (match-string-no-properties 2) *sh-nicks*)))
+      (when str
+	(when t
+	  (setf *sh-previous-sent-time* (cadr (current-time)))
+	  (erc-send-message (concat (match-string-no-properties 1) ": " str)))))))
+(defun say-hello-build-nick-list ()
+  (with-temp-buffer
+    (clrhash *sh-nicks*)
+    (insert-file-contents *sh-nicks-file* nil nil nil t)
+    (while (re-search-forward "\\([^[:space:]]+\\)[[:space:]]+\\([^[:space:]]+\\)" nil t)
+      (puthash (match-string-no-properties 1) (match-string-no-properties 2) *sh-nicks*))))
+(say-hello-build-nick-list)
+;; *** blez (blez@ip-162-4-71-77.varnalan.net) has joined channel #ubuntu
+(add-hook 'erc-insert-post-hook 'say-hello)
+;; (remove-hook 'erc-insert-post-hook 'auto-hello)
