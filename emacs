@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-25 20:33:33 cfy>
+;; Time-stamp: <2012-04-26 14:15:44 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
@@ -30,6 +30,8 @@
 ;;启动时直接进*scratch*
 ;;显示电池信息
 (display-battery-mode)
+(if (string= "cfy" (user-real-login-name))
+    (load "cfy-battery-linux-proc-acpi"))
 ;; 把f5绑定为magit-status
 (global-set-key (quote [f5]) (quote magit-status))
 ;; 把f6绑定为compile 
