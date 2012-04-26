@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-26 21:28:20 cfy>
+;; Time-stamp: <2012-04-26 22:12:13 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
@@ -127,7 +127,7 @@
 ;;(add-hook 'emacs-lisp-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-symbols)))
 ;;(add-hook 'auto-complete-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-filename)))
 (set-face-background 'ac-candidate-face "lightgray")
-(set-face-underline 'ac-candidate-face "darkgray")
+(set-face-underline-p 'ac-candidate-face "darkgray")
 (set-face-background 'ac-selection-face "steelblue")
 (define-key ac-completing-map "\M-n" 'ac-next)
 (define-key ac-completing-map "\M-p" 'ac-previous)
@@ -150,10 +150,9 @@
 
 
 ;; ;; color-theme
-(if (eq emacs-major-version 25)
-    (progn 
-      (color-theme-initialize)
-      (color-theme-charcoal-black)))
+;; (progn 
+;;   (color-theme-initialize)
+;;   (color-theme-charcoal-black))
 ;; (require 'color-theme)
 ;; ;; for color-theme-select
 ;; (defun color-theme-face-attr-construct (face frame)
@@ -201,8 +200,8 @@
 
 ;; (cperl-set-style 'PerlStyle)
 (add-hook 'cperl-mode-hook 'cperl-mode-hook t)
-(defun cperl-mode-hook()
-  (cperl-set-style "PerlStyle"))
+;; (defun cperl-mode-hook()
+;;   (cperl-set-style "PerlStyle"))
 ;; cperl indent
 (setq cperl-auto-newline t)
 (setq cperl-electric-paren t)
@@ -363,7 +362,7 @@
 	  (condition-case err
 	      (eval (read-from-whole-string form-string))
 	    (error
-	     (format "Error: %s" error)))))
+	     (format "Error: %s" err)))))
     (erc-send-message (format "%s => %S" form-string result))))
 
 (require 'erc-services)
@@ -614,3 +613,12 @@ mentioned in an erc channel" t)
 ;; *** blez (blez@ip-162-4-71-77.varnalan.net) has joined channel #ubuntu
 (add-hook 'erc-insert-post-hook 'say-hello)
 ;; (remove-hook 'erc-insert-post-hook 'auto-hello)
+
+;;; Auto byte-compile
+;;; copy from http://xahlee.org/emacs/organize_your_dot_emacs.html
+(defun auto-recompile-el-buffer ()
+  (interactive)
+  (when (and (eq major-mode 'emacs-lisp-mode)
+             (file-exists-p (byte-compile-dest-file buffer-file-name)))
+    (byte-compile-file buffer-file-name)))
+(add-hook 'after-save-hook 'auto-recompile-el-buffer)
