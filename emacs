@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-27 08:59:31 cfy>
+;; Time-stamp: <2012-04-27 09:25:14 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
@@ -295,8 +295,8 @@
 ;;emacs server
 (server-start)
 
-;; ;;turn off menu bar and tool bar
-(menu-bar-mode -1)
+;;; turn off tool bar
+;; (menu-bar-mode -1)
 (tool-bar-mode -1)
 
 ;;elscreen
