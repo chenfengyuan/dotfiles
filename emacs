@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-27 13:30:17 cfy>
+;; Time-stamp: <2012-04-27 14:02:17 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -626,3 +626,9 @@ mentioned in an erc channel" t)
 
 ;;; display time and load level
 (display-time)
+
+;;; pretty lambda
+(add-to-list 'load-path "/home/cfy/.emacs.d/elpa/pretty-lambdada-22.0/")
+(require 'pretty-lambdada)
+(pretty-lambda-for-modes)
+
