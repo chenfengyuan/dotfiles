@@ -1,9 +1,9 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-27 09:25:14 cfy>
+;; Time-stamp: <2012-04-27 10:08:46 cfy>
 
 ;;更改frame title 的显示信息
-(setq frame-title-format "%I\t%b\temacs")
+(setq frame-title-format "%I\t%b\temacs42")
 
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
