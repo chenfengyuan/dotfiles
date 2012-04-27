@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-27 10:08:46 cfy>
+;; Time-stamp: <2012-04-27 12:26:04 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -475,6 +475,7 @@ mentioned in an erc channel" t)
 ;;erc-start
 ;; (erc-start)
 
+(require 'ielm)
 (require 'paredit)
 (dolist (mode-map `(,slime-mode-map ,emacs-lisp-mode-map ,lisp-interaction-mode-map ,ielm-map))
   (define-key mode-map (kbd "(") 'paredit-open-parenthesis)
