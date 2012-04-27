@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-27 12:45:20 cfy>
+;; Time-stamp: <2012-04-27 13:30:17 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -582,14 +582,9 @@ mentioned in an erc channel" t)
 (scroll-bar-mode -1)
 
 ;;; zone
-;; (require 'zone)
-;; (zone-when-idle (* 60 3))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(require 'zone)
+(setq zone-programs [zone-pgm-five-oclock-swan-dive zone-pgm-drip zone-pgm-drip-fretfully zone-pgm-five-oclock-swan-dive zone-pgm-martini-swan-dive zone-pgm-stress zone-pgm-stress-destress zone-pgm-random-life])
+(zone-when-idle 42)
 
 ;;; erc say Hello
 (defvar *sh-nicks* (make-hash-table :test 'equal))
