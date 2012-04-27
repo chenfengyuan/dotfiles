@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-27 08:52:53 cfy>
+;; Time-stamp: <2012-04-27 08:59:31 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
@@ -486,6 +486,7 @@ mentioned in an erc channel" t)
   (define-key mode-map (kbd "RET") 'paredit-newline)
   (define-key mode-map (kbd "<return>") 'paredit-newline)
   (define-key mode-map (kbd "C-j") 'newline)
+  (define-key mode-map (kbd "<backspace>") 'paredit-backward-delete)
 
 ;;;; nb: this assumes dvorak key layout
   (define-key mode-map (kbd "M-b") 'backward-sexp)
@@ -510,6 +511,7 @@ mentioned in an erc channel" t)
   (define-key mode-map (kbd "C-<return>") 'paredit-newline)
 ;;;; i hate having to take my key off of ctrl for this and i don't use complete-form anyway...
   (define-key mode-map (kbd "C-c C-i") 'slime-inspect))
+(define-key ielm-map (kbd "<return>") 'ielm-return)
 
 ;; (require 'highlight-parentheses)
 ;; (define-globalized-minor-mode global-highlight-parentheses-mode
