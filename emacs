@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-27 00:06:40 cfy>
+;; Time-stamp: <2012-04-27 08:52:53 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs")
@@ -210,8 +210,8 @@
 ;; c/l mode
 (setq c-default-style
       '((java-mode . "java")
-       (awk-mode . "awk")
-       (other . "linux")))
+	(awk-mode . "awk")
+	(other . "linux")))
 (setq c-auto-newline t)
 
 ;; 字体
@@ -233,7 +233,7 @@
  (face-list))
 (set-frame-font "DejaVu Sans Mono:pixelsize=15")
 (set-fontset-font (frame-parameter nil 'font)
-		    'han (font-spec :family "vera Sans YuanTi Mono"))
+		  'han (font-spec :family "vera Sans YuanTi Mono"))
 (set-fontset-font (frame-parameter nil 'font)
 		  'cjk-misc (font-spec :family "vera Sans YuanTi Mono"))
 ;; (set-frame-font "DejaVu Sans Mono:pixelsize=15")
@@ -394,7 +394,7 @@
 ;;      (load-library "erc-highlight-nicknames")
 ;;      (add-to-list 'erc-modules 'highlight-nicknames)
 ;;      (erc-update-modules))
-     
+
 ;;; erc nick notify
 (autoload 'erc-nick-notify-mode "erc-nick-notify"
   "Minor mode that calls `erc-nick-notify-cmd' when his nick gets
@@ -476,39 +476,40 @@ mentioned in an erc channel" t)
 ;; (erc-start)
 
 (require 'paredit)
-(define-key slime-mode-map (kbd "(") 'paredit-open-parenthesis)
-(define-key slime-mode-map (kbd ")") 'paredit-close-parenthesis)
+(dolist (mode-map `(,slime-mode-map ,emacs-lisp-mode-map ,lisp-interaction-mode-map ,ielm-map))
+  (define-key mode-map (kbd "(") 'paredit-open-parenthesis)
+  (define-key mode-map (kbd ")") 'paredit-close-parenthesis)
 
-(define-key slime-mode-map (kbd "\"") 'paredit-doublequote)
-(define-key slime-mode-map (kbd "\\") 'paredit-backslash)
+  (define-key mode-map (kbd "\"") 'paredit-doublequote)
+  (define-key mode-map (kbd "\\") 'paredit-backslash)
 
-(define-key slime-mode-map (kbd "RET") 'paredit-newline)
-(define-key slime-mode-map (kbd "<return>") 'paredit-newline)
-(define-key slime-mode-map (kbd "C-j") 'newline)
+  (define-key mode-map (kbd "RET") 'paredit-newline)
+  (define-key mode-map (kbd "<return>") 'paredit-newline)
+  (define-key mode-map (kbd "C-j") 'newline)
 
 ;;;; nb: this assumes dvorak key layout
-(define-key slime-mode-map (kbd "M-b") 'backward-sexp)
-(define-key slime-mode-map (kbd "M-t") 'transpose-sexps)
-(define-key slime-mode-map (kbd "C-M-t") 'transpose-chars)
-(define-key slime-mode-map (kbd "M-f") 'forward-sexp)
-(define-key slime-mode-map (kbd "M-d") 'kill-sexp)
-(define-key slime-mode-map (kbd "C-M-k") 'paredit-kill)
-(define-key slime-mode-map (kbd "C-'") 'paredit-splice-sexp)
-(define-key slime-mode-map (kbd "C-M-l") 'paredit-recentre-on-sexp)
-(define-key slime-mode-map (kbd "C-,") 'paredit-backward-slurp-sexp)
-(define-key slime-mode-map (kbd "C-.") 'paredit-forward-slurp-sexp)
-(define-key slime-mode-map (kbd "C-<") 'paredit-backward-barf-sexp)
-(define-key slime-mode-map (kbd "C->") 'paredit-forward-barf-sexp)
-(define-key slime-mode-map (kbd "C-/") 'backward-up-list)
-(define-key slime-mode-map (kbd "C-=") 'down-list)
-(define-key slime-mode-map (kbd "TAB") 'slime-indent-and-complete-symbol)
-(define-key slime-mode-map (kbd "C-c TAB") 'slime-complete-form)
+  (define-key mode-map (kbd "M-b") 'backward-sexp)
+  (define-key mode-map (kbd "M-t") 'transpose-sexps)
+  (define-key mode-map (kbd "C-M-t") 'transpose-chars)
+  (define-key mode-map (kbd "M-f") 'forward-sexp)
+  (define-key mode-map (kbd "M-d") 'kill-sexp)
+  (define-key mode-map (kbd "C-M-k") 'paredit-kill)
+  (define-key mode-map (kbd "C-'") 'paredit-splice-sexp)
+  (define-key mode-map (kbd "C-M-l") 'paredit-recentre-on-sexp)
+  (define-key mode-map (kbd "C-,") 'paredit-backward-slurp-sexp)
+  (define-key mode-map (kbd "C-.") 'paredit-forward-slurp-sexp)
+  (define-key mode-map (kbd "C-<") 'paredit-backward-barf-sexp)
+  (define-key mode-map (kbd "C->") 'paredit-forward-barf-sexp)
+  (define-key mode-map (kbd "C-/") 'backward-up-list)
+  (define-key mode-map (kbd "C-=") 'down-list)
+  (define-key mode-map (kbd "TAB") 'slime-indent-and-complete-symbol)
+  (define-key mode-map (kbd "C-c TAB") 'slime-complete-form)
 ;;;; this may seem strange, but i often use the C-<whatever> motion
 ;;;; commands in sequence to reformat code and having to take a finger off of control
 ;;;; to add a return is a pain
-(define-key slime-mode-map (kbd "C-<return>") 'paredit-newline)
+  (define-key mode-map (kbd "C-<return>") 'paredit-newline)
 ;;;; i hate having to take my key off of ctrl for this and i don't use complete-form anyway...
-(define-key slime-mode-map (kbd "C-c C-i") 'slime-inspect)
+  (define-key mode-map (kbd "C-c C-i") 'slime-inspect))
 
 ;; (require 'highlight-parentheses)
 ;; (define-globalized-minor-mode global-highlight-parentheses-mode
@@ -621,7 +622,8 @@ mentioned in an erc channel" t)
   (when (and (eq major-mode 'emacs-lisp-mode)
              (file-exists-p (byte-compile-dest-file buffer-file-name)))
     (byte-compile-file buffer-file-name)))
-(add-hook 'after-save-hook 'auto-recompile-el-buffer)
+(if (string= (system-name) "cfy-notebook")
+    (add-hook 'after-save-hook 'auto-recompile-el-buffer))
 
 ;;; face
 (set-background-color "honeydew")
