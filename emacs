@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-27 12:26:04 cfy>
+;; Time-stamp: <2012-04-27 12:34:03 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -20,10 +20,8 @@
 ;;在auto-complete不能不全的地方使用
 (global-set-key (kbd "M-/") 'hippie-expand)
 
-(display-time)
-;;显示time,load level,mail flag
-(show-paren-mode t)
 ;;括号匹配时显示另外一边的括号，而不是烦人的跳到另一个括号。
+(show-paren-mode t)
 ;;(put 'narrow-to-region 'disabled nil)
 ;;
 ;;(setq inhibit-startup-screen t)
