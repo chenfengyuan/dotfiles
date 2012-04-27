@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-27 14:02:17 cfy>
+;; Time-stamp: <2012-04-27 15:43:59 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -582,9 +582,9 @@ mentioned in an erc channel" t)
 (scroll-bar-mode -1)
 
 ;;; zone
-(require 'zone)
-(setq zone-programs [zone-pgm-five-oclock-swan-dive zone-pgm-drip zone-pgm-drip-fretfully zone-pgm-five-oclock-swan-dive zone-pgm-martini-swan-dive zone-pgm-stress zone-pgm-stress-destress zone-pgm-random-life])
-(zone-when-idle 42)
+;; (require 'zone)
+;; (setq zone-programs [zone-pgm-five-oclock-swan-dive zone-pgm-drip zone-pgm-drip-fretfully zone-pgm-five-oclock-swan-dive zone-pgm-martini-swan-dive zone-pgm-stress zone-pgm-stress-destress zone-pgm-random-life])
+;; (zone-when-idle 42)
 
 ;;; erc say Hello
 (defvar *sh-nicks* (make-hash-table :test 'equal))
