@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-27 12:34:03 cfy>
+;; Time-stamp: <2012-04-27 12:45:20 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -628,3 +628,6 @@ mentioned in an erc channel" t)
 
 ;;; face
 (set-background-color "honeydew")
+
+;;; display time and load level
+(display-time)
