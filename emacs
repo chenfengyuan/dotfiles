@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-27 15:43:59 cfy>
+;; Time-stamp: <2012-04-30 21:49:33 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -475,6 +475,9 @@ mentioned in an erc channel" t)
 
 (require 'ielm)
 (require 'paredit)
+(dolist (mode-map `(,slime-mode-map ,emacs-lisp-mode-map))
+  (define-key mode-map (kbd "TAB") 'slime-indent-and-complete-symbol)
+  (define-key mode-map (kbd "C-c TAB") 'slime-complete-form))
 (dolist (mode-map `(,slime-mode-map ,emacs-lisp-mode-map ,lisp-interaction-mode-map ,ielm-map))
   (define-key mode-map (kbd "(") 'paredit-open-parenthesis)
   (define-key mode-map (kbd ")") 'paredit-close-parenthesis)
@@ -494,6 +497,7 @@ mentioned in an erc channel" t)
   (define-key mode-map (kbd "M-f") 'forward-sexp)
   (define-key mode-map (kbd "M-d") 'kill-sexp)
   (define-key mode-map (kbd "C-M-k") 'paredit-kill)
+  (define-key mode-map (kbd "C-k") 'paredit-kill)
   (define-key mode-map (kbd "C-'") 'paredit-splice-sexp)
   (define-key mode-map (kbd "C-M-l") 'paredit-recentre-on-sexp)
   (define-key mode-map (kbd "C-,") 'paredit-backward-slurp-sexp)
@@ -502,8 +506,6 @@ mentioned in an erc channel" t)
   (define-key mode-map (kbd "C->") 'paredit-forward-barf-sexp)
   (define-key mode-map (kbd "C-/") 'backward-up-list)
   (define-key mode-map (kbd "C-=") 'down-list)
-  (define-key mode-map (kbd "TAB") 'slime-indent-and-complete-symbol)
-  (define-key mode-map (kbd "C-c TAB") 'slime-complete-form)
 ;;;; this may seem strange, but i often use the C-<whatever> motion
 ;;;; commands in sequence to reformat code and having to take a finger off of control
 ;;;; to add a return is a pain
