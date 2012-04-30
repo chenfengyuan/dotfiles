@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-04-30 21:49:33 cfy>
+;; Time-stamp: <2012-04-30 22:50:43 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -634,3 +634,5 @@ mentioned in an erc channel" t)
 (require 'pretty-lambdada)
 (pretty-lambda-for-modes)
 
+;;; Sort files in dired.
+(require 'dired-sort)
