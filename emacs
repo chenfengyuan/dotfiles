@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-05-01 16:06:46 cfy>
+;; Time-stamp: <2012-05-01 21:21:37 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -334,6 +334,23 @@
 ;;                                  "324" "329" "332" "333" "353" "477"))          
 ;; ;; don't show any of this                                                       
 ;; (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
+(defun erc-cmd-BAN (nick)
+  (let* ((chan (erc-default-target))
+         (who (erc-get-server-user nick))
+         (host (erc-server-user-host who))
+         (user (erc-server-user-login who)))
+    (erc-server-send (format "MODE %s +b *!%s@%s" chan user host))))
+
+(defun erc-cmd-KICKBAN (nick &rest reason)
+  (setq reason (mapconcat #'identity reason " "))
+  (and (string= reason "")
+       (setq reason nil))
+  (erc-cmd-BAN nick)
+  (erc-server-send (format "KICK %s %s %s"
+                            (erc-default-target)
+                            nick
+                            (or reason
+                                "Kicked (kickban)"))))
 (defun erc-cmd-HOWMANY (&rest ignore)
   "Display how many users (and ops) the current channel has."
   (erc-display-message nil 'notice (current-buffer)
@@ -632,7 +649,7 @@ mentioned in an erc channel" t)
 ;;; pretty lambda
 (add-to-list 'load-path "/home/cfy/.emacs.d/elpa/pretty-lambdada-22.0/")
 (require 'pretty-lambdada)
-(global-pretty-lambda-mode)
+(pretty-lambda-for-modes)
 
 ;;; Sort files in dired.
 (require 'dired-sort)
