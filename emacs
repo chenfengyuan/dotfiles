@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-05-01 21:21:37 cfy>
+;; Time-stamp: <2012-05-07 22:41:55 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -653,3 +653,9 @@ mentioned in an erc channel" t)
 
 ;;; Sort files in dired.
 (require 'dired-sort)
+
+;;;  keyfreq
+;;; And use keyfreq-show to see how many times you used a command.
+(require 'keyfreq)
+(keyfreq-mode 1)
+(keyfreq-autosave-mode 1)
