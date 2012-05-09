@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-05-07 22:41:55 cfy>
+;; Time-stamp: <2012-05-09 11:10:41 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -280,7 +280,7 @@
 ;; (global-linum-mode t)
 
 ;;cursor
-(blink-cursor-mode nil)
+(blink-cursor-mode -1)
 
 ;; ;;pinbar
 ;; (require 'pinbar)
