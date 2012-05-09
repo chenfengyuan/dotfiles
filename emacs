@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-05-09 11:10:41 cfy>
+;; Time-stamp: <2012-05-09 13:49:05 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -334,6 +334,16 @@
 ;;                                  "324" "329" "332" "333" "353" "477"))          
 ;; ;; don't show any of this                                                       
 ;; (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
+;;; auto rejoin channel when being kicked
+(defun auto-rejoin(buffer)
+  (let ((bn (buffer-name buffer)))
+    (run-at-time "0.1 sec" nil
+		 (lambda (bn)
+		   (set-buffer bn)
+		   (erc-join-channel bn))
+		 bn)))
+(add-hook 'erc-kick-hook 'auto-rejoin)
+
 (defun erc-cmd-BAN (nick)
   (let* ((chan (erc-default-target))
          (who (erc-get-server-user nick))
