@@ -234,7 +234,7 @@ my_prompt()
 {
     echo -en "\e${WHITE}[\e${CYAN}Login\e${WHITE}] \e${GREEN}%n \e${RESET}at \e${WHITE}%m \e${RESET}in \e${BLUE}%d"
     echo
-    echo "%{\e${RED}%}\$ %{\e${RESET}%}"
+    echo "%{\e${RED}%}%# %{\e${RESET}%}"
 }
 
 autoload -U promptinit colors
