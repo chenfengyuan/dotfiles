@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-05-09 13:49:05 cfy>
+;; Time-stamp: <2012-05-10 20:38:11 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -400,9 +400,10 @@
 	 "#ubuntu-cn" "#gentoo-cn" "#lisp-zh" 
 	 "#qi-hardware-cn")))
 (setq erc-autojoin-timing 'ident)
+(require 'tls)
 (defun erc-start ()
   (interactive)
-  (erc :server "irc.freenode.net" :port 8001 :nick "cfy"))
+  (erc-tls :server "irc.freenode.net" :port 6697 :nick "cfy"))
 (require 'erc-log)
 (setq erc-log-file-coding-system 'utf-8)
 (setq erc-enable-logging 'erc-log-all-but-server-buffers)
