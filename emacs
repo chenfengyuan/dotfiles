@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-05-10 20:38:11 cfy>
+;; Time-stamp: <2012-05-10 20:48:58 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -398,7 +398,7 @@
 (setq erc-autojoin-channels-alist
       '(("freenode.net"
 	 "#ubuntu-cn" "#gentoo-cn" "#lisp-zh" 
-	 "#qi-hardware-cn")))
+	 "#qi-hardware-cn" "#emacs")))
 (setq erc-autojoin-timing 'ident)
 (require 'tls)
 (defun erc-start ()
