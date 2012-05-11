@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-05-10 20:48:58 cfy>
+;; Time-stamp: <2012-05-11 07:37:41 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -670,3 +670,6 @@ mentioned in an erc channel" t)
 (require 'keyfreq)
 (keyfreq-mode 1)
 (keyfreq-autosave-mode 1)
+
+;;; use woman instead of man
+(defalias 'man 'woman)
