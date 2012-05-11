@@ -36,8 +36,7 @@
 (global-set-key (quote [f6]) (quote compile))
 ;; bind the slime-selector function to F12
 (global-set-key (quote [f7]) (quote slime-selector))
-;;把C-x C-m和C-c C-m 替代M-x
-(global-set-key "\C-x\C-m" 'execute-extended-command)
+;;C-c C-m 替代M-x
 (global-set-key "\C-c\C-m" 'execute-extended-command)
 ;; slime-close-parens-at-point
 (global-set-key "" (quote slime-close-all-parens-in-sexp))
