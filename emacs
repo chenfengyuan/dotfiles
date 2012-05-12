@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-05-11 07:37:41 cfy>
+;; Time-stamp: <2012-05-12 12:55:53 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -224,10 +224,10 @@
 ;; (set-frame-font "monofur:pixelsize=20")
 ;; (set-fontset-font (frame-parameter nil 'font)
 ;; 		    'han (font-spec :family "Heiti SC Light"))
-(mapc
- (lambda (face)
-   (set-face-attribute face nil :weight 'normal :underline nil))
- (face-list))
+;; (mapc
+;;  (lambda (face)
+;;    (set-face-attribute face nil :weight 'normal :underline nil))
+;;  (face-list))
 (set-frame-font "DejaVu Sans Mono:pixelsize=15")
 (set-fontset-font (frame-parameter nil 'font)
 		  'han (font-spec :family "vera Sans YuanTi Mono"))
@@ -580,9 +580,7 @@ mentioned in an erc channel" t)
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; '(custom-enabled-themes (quote (misterioso)))
- ;; '(custom-safe-themes (quote ("986ffc89942d29287982e1066784dbdf3bc6740adec6886b200f41922ae84852" "669feb4d768dcc48feaf1d9c6156d29a587949fd44c0f87121443115de2c265e" "36afe64261e1de73fcfadedf154e4bc2c9ec1969bde0c21798d31366897bc4d2" default)))
- '(org-agenda-files (quote ("~/orgs/misc.org" "~/orgs/qa.org" "~/orgs/install_gentoo.org" "~/orgs/todo.org"))))
+ '(org-agenda-files (quote ("~/orgs/vpn.org" "~/orgs/misc.org" "~/orgs/qa.org" "~/orgs/install_gentoo.org" "~/orgs/todo.org"))))
 
 ;; ;;; fast-paren-mode
 ;; (require 'fast-paren-mode)
@@ -672,3 +670,9 @@ mentioned in an erc channel" t)
 
 ;;; use woman instead of man
 (defalias 'man 'woman)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
