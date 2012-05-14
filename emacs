@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-05-14 09:17:02 cfy>
+;; Time-stamp: <2012-05-14 10:06:34 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -318,7 +318,6 @@
 ;; turn on soft wrapping mode for org mode
 (add-hook 'org-mode-hook
 	  (lambda () (setq truncate-lines nil)))
-(setq org-default-notes-file (concat org-directory "/notes.org"))
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-refile-targets '(("gtd.org" :maxlevel . 1)))
 
@@ -605,6 +604,7 @@ mentioned in an erc channel" t)
 (setq org-mobile-inbox-for-pull "~/orgs/flagged.org")
 ;; Set to <your Dropbox root directory>/MobileOrg.
 (setq org-mobile-directory "~/MobileOrg")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
 
 ;;; disable scrool bar
 (scroll-bar-mode -1)
