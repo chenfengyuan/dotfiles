@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-05-14 08:14:31 cfy>
+;; Time-stamp: <2012-05-14 09:17:02 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -318,8 +318,9 @@
 ;; turn on soft wrapping mode for org mode
 (add-hook 'org-mode-hook
 	  (lambda () (setq truncate-lines nil)))
-
-
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map "\C-cc" 'org-capture)
+(setq org-refile-targets '(("gtd.org" :maxlevel . 1)))
 
 ;; (require 'socks)
 ;; (setq socks-noproxy '("localhost"))
@@ -580,7 +581,7 @@ mentioned in an erc channel" t)
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/orgs/gtd.org" "~/orgs/vpn.org" "~/orgs/misc.org" "~/orgs/qa.org" "~/orgs/install_gentoo.org" "~/orgs/todo.org"))))
+ '(org-agenda-files (quote ("~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org"))))
 
 ;; ;;; fast-paren-mode
 ;; (require 'fast-paren-mode)
