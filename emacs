@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-05-14 10:06:34 cfy>
+;; Time-stamp: <2012-05-16 14:23:55 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -320,7 +320,7 @@
 	  (lambda () (setq truncate-lines nil)))
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-refile-targets '(("gtd.org" :maxlevel . 1)))
-
+(require 'org-movie)
 ;; (require 'socks)
 ;; (setq socks-noproxy '("localhost"))
 ;; (setq socks-override-functions 1)
