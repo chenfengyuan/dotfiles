@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-05-16 14:23:55 cfy>
+;; Time-stamp: <2012-05-28 09:30:19 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -8,6 +8,7 @@
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
        (add-to-list 'load-path "~/.lisp")
+       (add-to-list 'load-path "~/.lisp/google-weather-el")
        ;; (load (expand-file-name "~/quicklisp/slime-helper.el"))
        )
       ((eq system-type 'windows-nt)))
@@ -28,6 +29,7 @@
 ;;启动时直接进*scratch*
 ;;显示电池信息
 (display-battery-mode)
+(setq battery-mode-line-format "[%b%p%%,%t]")
 (if (string= "cfy" (user-real-login-name))
     (load "cfy-battery-linux-proc-acpi"))
 ;; 把f5绑定为magit-status
@@ -580,7 +582,7 @@ mentioned in an erc channel" t)
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org"))))
+ '(org-agenda-files (quote ("~/orgs/java.org" "~/orgs/weather.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org"))))
 
 ;; ;;; fast-paren-mode
 ;; (require 'fast-paren-mode)
@@ -677,3 +679,16 @@ mentioned in an erc channel" t)
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(require 'org-google-weather)
+
+;;; org export beamer
+(require 'org-export-beamer)
+
+;;; org capture
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/orgs/gtd.org" "Tasks")
+	 "* TODO %?\n  %i\n  %a")
+	("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate")
+	 "* TODO %?\n  %i\n  %a")
+	("p" "Postgraduate" entry (file+headline "~/orgs/gtd.org" "Postgraduate")
+	 "* TODO %?\n  %i\n  %a")))
