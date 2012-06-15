@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-05-28 15:15:03 cfy>
+;; Time-stamp: <2012-06-08 10:48:46 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -692,3 +692,6 @@ mentioned in an erc channel" t)
 	 "* TODO %?\n  %i\n  %a")
 	("p" "Postgraduate" entry (file+headline "~/orgs/gtd.org" "Postgraduate")
 	 "* TODO %?\n  %i\n  %a")))
+
+;;; latex compile command
+(setq LaTeX-command "xelatex")
