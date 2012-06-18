@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-06-18 10:23:01 cfy>
+;; Time-stamp: <2012-06-18 14:13:57 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -697,5 +697,6 @@ mentioned in an erc channel" t)
 (setq LaTeX-command "xelatex")
 
 ;;; erc-yank
+(require 'erc-yank)
 (add-hook 'erc-mode-hook
           (lambda () (define-key erc-mode-map [(control ?y)] 'erc-yank)))
