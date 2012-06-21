@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-06-18 14:13:57 cfy>
+;; Time-stamp: <2012-06-22 07:22:05 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -638,7 +638,7 @@ mentioned in an erc channel" t)
       (puthash (match-string-no-properties 1) (match-string-no-properties 2) *sh-nicks*))))
 (say-hello-build-nick-list)
 ;; *** blez (blez@ip-162-4-71-77.varnalan.net) has joined channel #ubuntu
-(add-hook 'erc-insert-post-hook 'say-hello)
+;; (add-hook 'erc-insert-post-hook 'say-hello)
 ;; (remove-hook 'erc-insert-post-hook 'auto-hello)
 
 ;;; Auto byte-compile
@@ -696,7 +696,3 @@ mentioned in an erc channel" t)
 ;;; latex compile command
 (setq LaTeX-command "xelatex")
 
-;;; erc-yank
-(require 'erc-yank)
-(add-hook 'erc-mode-hook
-          (lambda () (define-key erc-mode-map [(control ?y)] 'erc-yank)))
