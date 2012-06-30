@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-06-22 07:22:05 cfy>
+;; Time-stamp: <2012-06-30 23:24:10 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -323,6 +323,8 @@
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-refile-targets '(("gtd.org" :maxlevel . 1)))
 (require 'org-movie)
+;;; display calendar in org agenda
+(setq org-agenda-include-diary t)
 ;; (require 'socks)
 ;; (setq socks-noproxy '("localhost"))
 ;; (setq socks-override-functions 1)
