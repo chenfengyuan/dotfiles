@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-07-02 17:24:07 cfy>
+;; Time-stamp: <2012-07-13 12:17:06 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -584,7 +584,7 @@ mentioned in an erc channel" t)
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/orgs/java.org" "~/orgs/weather.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org"))))
+ '(org-agenda-files (quote ("~/gits/smart-car/smart-car.org" "~/orgs/java.org" "~/orgs/weather.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org"))))
 
 ;; ;;; fast-paren-mode
 ;; (require 'fast-paren-mode)
