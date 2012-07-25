@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-07-13 12:17:06 cfy>
+;; Time-stamp: <2012-07-25 23:44:23 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -441,10 +441,14 @@ mentioned in an erc channel" t)
 
 
 ;; (setq inferior-lisp-program "/usr/bin/sbcl")
+(require 'slime)
 (setq inferior-lisp-program "/home/cfy/.bin/sbcl --no-sysinit"
       slime-net-coding-system 'utf-8-unix
-      common-lisp-hyperspec-root "file:///usr/share/doc/hyperspec-7.0-r2/HyperSpec/")
-(require 'slime)
+      common-lisp-hyperspec-root "file:///usr/share/doc/hyperspec-7.0-r2/HyperSpec/"
+      lisp-simple-loop-indentation 1
+      lisp-loop-keyword-indentation 6
+      lisp-loop-forms-indentation 6)
+
 
 ;; (autoload 'dictionary-search "dictionary"
 ;;   "Ask for a word and search it in all dictionaries" t)
@@ -473,6 +477,13 @@ mentioned in an erc channel" t)
   (slime-connect "127.0.0.1" "4004"))
 ;; (sc)
 (setq slime-description-autofocus t)
+
+;; ecl
+(defun ecl()
+  (interactive)
+  (slime-start* '(:program "ecl" :program-args ("--encoding" "UTF8"))))
+
+
 ;; ccl
 (defun ccl()
   (interactive)
