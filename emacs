@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-07-25 23:44:23 cfy>
+;; Time-stamp: <2012-07-26 23:50:09 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -442,7 +442,7 @@ mentioned in an erc channel" t)
 
 ;; (setq inferior-lisp-program "/usr/bin/sbcl")
 (require 'slime)
-(setq inferior-lisp-program "/home/cfy/.bin/sbcl --no-sysinit"
+(setq inferior-lisp-program "ccl -K utf-8"
       slime-net-coding-system 'utf-8-unix
       common-lisp-hyperspec-root "file:///usr/share/doc/hyperspec-7.0-r2/HyperSpec/"
       lisp-simple-loop-indentation 1
