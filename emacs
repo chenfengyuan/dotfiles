@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-07-26 23:50:09 cfy>
+;; Time-stamp: <2012-07-28 19:15:36 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -441,7 +441,9 @@ mentioned in an erc channel" t)
 
 
 ;; (setq inferior-lisp-program "/usr/bin/sbcl")
+(add-to-list 'load-path "/home/cfy/quicklisp/dists/quicklisp/software/slime-20120703-cvs/")
 (require 'slime)
+(slime-setup '(slime-fancy))
 (setq inferior-lisp-program "ccl -K utf-8"
       slime-net-coding-system 'utf-8-unix
       common-lisp-hyperspec-root "file:///usr/share/doc/hyperspec-7.0-r2/HyperSpec/"
@@ -709,3 +711,23 @@ mentioned in an erc channel" t)
 ;;; latex compile command
 (setq LaTeX-command "xelatex")
 
+;;; slime remote file name
+(require 'slime-tramp)
+(setq slime-to-lisp-filename-function
+      (lambda (filename)
+	(if (or (null (slime-connected-p)) (string= (slime-machine-instance) "cfy-notebook"))
+	    (convert-standard-filename filename)
+	  (slime-tramp-to-lisp-filename filename))))
+;; (setq slime-to-lisp-filename 'convert-standard-filename)
+
+(setq slime-from-lisp-filename-function
+      (lambda (filename)
+	(if (or (null (slime-connected-p)) (string= (slime-machine-instance) "cfy-notebook"))
+	    (identity filename)
+	  (slime-tramp-from-lisp-filename filename))))
+;; (setq slime-from-lisp-filename-function 'identify)
+
+(setf slime-filename-translations
+      (list (slime-create-filename-translator :machine-instance "school"
+					      :remote-host "10.172.230.45"
+					      :username "cfy")))
