@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-07-28 19:15:36 cfy>
+;; Time-stamp: <2012-07-31 14:16:20 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -731,3 +731,11 @@ mentioned in an erc channel" t)
       (list (slime-create-filename-translator :machine-instance "school"
 					      :remote-host "10.172.230.45"
 					      :username "cfy")))
+;; copy from http://emacswiki.org/emacs/ErcChannelTracking#toc4
+;; Clears out annoying erc-track-mode stuff for when we don't care.
+;; Useful for when ChanServ restarts :P
+(defun reset-erc-track-mode ()
+  (interactive)
+  (setq erc-modified-channels-alist nil)
+  (erc-modified-channels-update))
+(global-set-key (kbd "C-c r") 'reset-erc-track-mode)
