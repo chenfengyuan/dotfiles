@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-07-31 14:16:20 cfy>
+;; Time-stamp: <2012-08-01 12:42:29 cfy>
 
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
@@ -213,33 +213,25 @@
 	(other . "linux")))
 (setq c-auto-newline t)
 
-;; 字体
-;; (defun set-font (font size)
-;;   (set-fontset-font (frame-parameter nil 'font)
-;; 		    'han (font-spec :family font  :size size))
-;;   (set-fontset-font (frame-parameter nil 'font)
-;; 		    'symbol (font-spec :family font  :size size))
-;;   (set-fontset-font (frame-parameter nil 'font)
-;; 		    'cjk-misc (font-spec :family font :size size))
-;;   (set-fontset-font (frame-parameter nil 'font)
-;; 		    'bopomofo (font-spec :family font :size size)))
-;; (set-frame-font "monofur:pixelsize=20")
-;; (set-fontset-font (frame-parameter nil 'font)
-;; 		    'han (font-spec :family "Heiti SC Light"))
-;; (mapc
-;;  (lambda (face)
-;;    (set-face-attribute face nil :weight 'normal :underline nil))
-;;  (face-list))
+;;; 字体
+;; copy from Tux in newsmth.net
+;; http://dto.github.com/notebook/require-cl.html#sec-8
+;; http://stackoverflow.com/questions/5019724/in-emacs-what-does-this-error-mean-warning-cl-package-required-at-runtime
+(eval-when-compile (require 'cl))
+
+(let ((fonts
+       (ecase system-type
+	 (gnu/linux '("DejaVu Sans Mono" "vera Sans YuanTi Mono" 15)))))
+  (set-face-attribute 'default nil :font
+		      (format "%s:pixelsize=%d" (car fonts) (caddr fonts)))
+  (dolist (charset '(kana han symbol cjk-misc bopomofo))
+    (set-fontset-font (frame-parameter nil 'font) charset
+		      (font-spec :family (cadr fonts) :size nil))))
 (set-frame-font "DejaVu Sans Mono:pixelsize=15")
 (set-fontset-font (frame-parameter nil 'font)
 		  'han (font-spec :family "vera Sans YuanTi Mono"))
 (set-fontset-font (frame-parameter nil 'font)
 		  'cjk-misc (font-spec :family "vera Sans YuanTi Mono"))
-;; (set-frame-font "DejaVu Sans Mono:pixelsize=15")
-;; (set-font "Vera Sans YuanTi Mono" 15)
-;; ;; (set-default-font "WenQuanYi Micro hei 15")
-
-
 
 ;;; easypg，emacs 自带
 (require 'epa-file)
