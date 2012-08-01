@@ -1,7 +1,10 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-08-01 12:42:29 cfy>
+;; Time-stamp: <2012-08-01 12:46:50 cfy>
 
+;;; for compile
+(eval-when-compile
+  (require 'dired))
 ;;更改frame title 的显示信息
 (setq frame-title-format "%I\t%b\temacs42")
 
@@ -726,6 +729,8 @@ mentioned in an erc channel" t)
 ;; copy from http://emacswiki.org/emacs/ErcChannelTracking#toc4
 ;; Clears out annoying erc-track-mode stuff for when we don't care.
 ;; Useful for when ChanServ restarts :P
+(eval-when-compile
+  (require 'erc-track))
 (defun reset-erc-track-mode ()
   (interactive)
   (setq erc-modified-channels-alist nil)
