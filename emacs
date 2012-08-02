@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-08-01 12:46:50 cfy>
+;; Time-stamp: <2012-08-02 20:17:22 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -230,11 +230,6 @@
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font) charset
 		      (font-spec :family (cadr fonts) :size nil))))
-(set-frame-font "DejaVu Sans Mono:pixelsize=15")
-(set-fontset-font (frame-parameter nil 'font)
-		  'han (font-spec :family "vera Sans YuanTi Mono"))
-(set-fontset-font (frame-parameter nil 'font)
-		  'cjk-misc (font-spec :family "vera Sans YuanTi Mono"))
 
 ;;; easypg，emacs 自带
 (require 'epa-file)
@@ -725,6 +720,9 @@ mentioned in an erc channel" t)
 (setf slime-filename-translations
       (list (slime-create-filename-translator :machine-instance "school"
 					      :remote-host "10.172.230.45"
+					      :username "cfy")
+	    (slime-create-filename-translator :machine-instance "raspberrypi"
+					      :remote-host "rpi"
 					      :username "cfy")))
 ;; copy from http://emacswiki.org/emacs/ErcChannelTracking#toc4
 ;; Clears out annoying erc-track-mode stuff for when we don't care.
