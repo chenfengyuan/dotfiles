@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-08-02 20:17:22 cfy>
+;; Time-stamp: <2012-08-03 14:20:09 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -390,8 +390,8 @@
 (setq erc-email-userid "cfy")
 (setq erc-autojoin-channels-alist
       '(("freenode.net"
-	 "#ubuntu-cn" "#gentoo-cn" "#lisp-zh" "#c-zh"
-	 "#qi-hardware-cn" "#emacs")))
+	 "#gentoo-cn" "#lisp-zh" "#c-zh"
+	 "#emacs" "lisp")))
 (setq erc-autojoin-timing 'ident)
 (require 'tls)
 (defun erc-start ()
