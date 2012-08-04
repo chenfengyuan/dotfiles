@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-08-03 21:24:57 cfy>
+;; Time-stamp: <2012-08-04 11:16:09 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -724,13 +724,3 @@ mentioned in an erc channel" t)
 	    (slime-create-filename-translator :machine-instance "raspberrypi"
 					      :remote-host "rpi"
 					      :username "cfy")))
-;; copy from http://emacswiki.org/emacs/ErcChannelTracking#toc4
-;; Clears out annoying erc-track-mode stuff for when we don't care.
-;; Useful for when ChanServ restarts :P
-(eval-when-compile
-  (require 'erc-track))
-(defun reset-erc-track-mode ()
-  (interactive)
-  (setq erc-modified-channels-alist nil)
-  (erc-modified-channels-update))
-(global-set-key (kbd "C-c r") 'reset-erc-track-mode)
