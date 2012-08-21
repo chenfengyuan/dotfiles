@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-08-21 17:09:17 cfy>
+;; Time-stamp: <2012-08-21 17:10:38 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -689,11 +689,11 @@ mentioned in an erc channel" t)
 ;;; org capture
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/orgs/gtd.org" "Tasks")
-	 "* TODO %?\n  %i\n  %a")
+	 "* TODO %?\n")
 	("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate")
-	 "* TODO %?\n  %i\n  %a")
+	 "* TODO %?\n")
 	("p" "Postgraduate entrance exam" entry (file+headline "~/orgs/gtd.org" "postgraduate entrance exam")
-	 "* TODO %?\n  %i\n  %a")
+	 "* TODO %?\n")
 	("n" "NTU" entry (file+headline "~/orgs/gtd.org" "NTU")
 	 "* TODO %?\n")))
 
