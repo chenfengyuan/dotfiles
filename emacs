@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-08-04 11:16:09 cfy>
+;; Time-stamp: <2012-08-21 17:09:17 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -184,9 +184,6 @@
   "*Run `grep` on the files visited in buffers marked with '>'." t)
 (autoload 'igrep-insinuate "igrep"
   "Define `grep' aliases for the corresponding `igrep' commands." t)
-
-;; ;; downcase/upcase region available
-;; (put 'downcase-region 'disabled nil)
 
 ;; cperl-mode is preferred to perl-mode                                        
 ;; is the soul of wit" <foo at acm.org>
@@ -390,7 +387,7 @@
 (setq erc-email-userid "cfy")
 (setq erc-autojoin-channels-alist
       '(("freenode.net"
-	 "#gentoo-cn" "#lisp-zh" "#c-zh"
+	 "#gentoo-cn" "#lisp-zh" "#c-zh" "#ubuntu-cn"
 	 "#emacs" "#lisp")))
 (setq erc-autojoin-timing 'ident)
 (require 'tls)
@@ -696,7 +693,9 @@ mentioned in an erc channel" t)
 	("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate")
 	 "* TODO %?\n  %i\n  %a")
 	("p" "Postgraduate entrance exam" entry (file+headline "~/orgs/gtd.org" "postgraduate entrance exam")
-	 "* TODO %?\n  %i\n  %a")))
+	 "* TODO %?\n  %i\n  %a")
+	("n" "NTU" entry (file+headline "~/orgs/gtd.org" "NTU")
+	 "* TODO %?\n")))
 
 ;;; latex compile command
 (setq LaTeX-command "xelatex")
@@ -724,3 +723,4 @@ mentioned in an erc channel" t)
 	    (slime-create-filename-translator :machine-instance "raspberrypi"
 					      :remote-host "rpi"
 					      :username "cfy")))
+(put 'downcase-region 'disabled nil)
