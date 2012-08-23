@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-08-21 17:10:38 cfy>
+;; Time-stamp: <2012-08-23 08:09:46 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -426,6 +426,8 @@ mentioned in an erc channel" t)
 ;;    (setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#screen" "#ion")
 ;;                                        ("oftc.net" "#debian"))))
 
+;;; disable erc track mode
+(erc-track-disable)
 
 ;; (setq inferior-lisp-program "/usr/bin/sbcl")
 (add-to-list 'load-path "/home/cfy/quicklisp/dists/quicklisp/software/slime-20120703-cvs/")
