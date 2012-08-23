@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-08-23 08:09:46 cfy>
+;; Time-stamp: <2012-08-23 09:56:34 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -426,9 +426,6 @@ mentioned in an erc channel" t)
 ;;    (setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#screen" "#ion")
 ;;                                        ("oftc.net" "#debian"))))
 
-;;; disable erc track mode
-(erc-track-disable)
-
 ;; (setq inferior-lisp-program "/usr/bin/sbcl")
 (add-to-list 'load-path "/home/cfy/quicklisp/dists/quicklisp/software/slime-20120703-cvs/")
 (require 'slime)
@@ -586,6 +583,7 @@ mentioned in an erc channel" t)
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(erc-modules (quote (autojoin button completion fill irccontrols list log match menu move-to-prompt netsplit networks noncommands readonly ring services stamp)))
  '(org-agenda-files (quote ("~/gits/smart-car/smart-car.org" "~/orgs/java.org" "~/orgs/weather.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org"))))
 
 ;; ;;; fast-paren-mode
