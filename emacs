@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-08-23 09:56:34 cfy>
+;; Time-stamp: <2012-08-24 08:40:51 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -12,6 +12,7 @@
 (cond ((eq system-type 'gnu/linux)
        (add-to-list 'load-path "~/.lisp")
        (add-to-list 'load-path "~/.lisp/google-weather-el")
+       (add-to-list 'load-path "~/gits/elisp/")
        ;; (load (expand-file-name "~/quicklisp/slime-helper.el"))
        )
       ((eq system-type 'windows-nt)))
@@ -723,3 +724,7 @@ mentioned in an erc channel" t)
 					      :remote-host "rpi"
 					      :username "cfy")))
 (put 'downcase-region 'disabled nil)
+
+;;; auto change desktop background
+(require 'backgrounds)
+(backgrounds-toggle)
