@@ -650,8 +650,7 @@ mentioned in an erc channel" t)
   (when (and (eq major-mode 'emacs-lisp-mode)
              (file-exists-p (byte-compile-dest-file buffer-file-name)))
     (byte-compile-file buffer-file-name)))
-(if (string= (system-name) "cfy-notebook")
-    (add-hook 'after-save-hook 'auto-recompile-el-buffer))
+(add-hook 'after-save-hook 'auto-recompile-el-buffer)
 
 ;;; face
 (set-background-color "honeydew")
