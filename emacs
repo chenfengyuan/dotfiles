@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-08-24 16:25:11 cfy>
+;; Time-stamp: <2012-08-31 12:41:58 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -219,14 +219,14 @@
 ;; http://stackoverflow.com/questions/5019724/in-emacs-what-does-this-error-mean-warning-cl-package-required-at-runtime
 (eval-when-compile (require 'cl))
 
-(let ((fonts
-       (ecase system-type
-	 (gnu/linux '("DejaVu Sans Mono" "vera Sans YuanTi Mono" 15)))))
+(defun set-font (english chinese english-size chinese-size)
   (set-face-attribute 'default nil :font
-		      (format "%s:pixelsize=%d" (car fonts) (caddr fonts)))
+		      (format "%s:pixelsize=%d" english english-size))
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font) charset
-		      (font-spec :family (cadr fonts) :size nil))))
+		      (font-spec :family chinese :size chinese-size))))
+(ecase system-type
+  (gnu/linux (set-font "DejaVu Sans Mono" "WenQuanYi Micro Hei Mono" 14 16)))
 
 ;;; easypg，emacs 自带
 (require 'epa-file)
