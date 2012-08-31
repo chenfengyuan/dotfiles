@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-08-31 12:41:58 cfy>
+;; Time-stamp: <2012-08-31 12:45:53 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -226,7 +226,7 @@
     (set-fontset-font (frame-parameter nil 'font) charset
 		      (font-spec :family chinese :size chinese-size))))
 (ecase system-type
-  (gnu/linux (set-font "DejaVu Sans Mono" "WenQuanYi Micro Hei Mono" 14 16)))
+  (gnu/linux (set-font "DejaVu Sans Mono" "vera Sans YuanTi Mono" 14 16)))
 
 ;;; easypg，emacs 自带
 (require 'epa-file)
