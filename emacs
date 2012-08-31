@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-08-31 12:45:53 cfy>
+;; Time-stamp: <2012-09-01 00:05:46 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -226,7 +226,12 @@
     (set-fontset-font (frame-parameter nil 'font) charset
 		      (font-spec :family chinese :size chinese-size))))
 (ecase system-type
-  (gnu/linux (set-font "DejaVu Sans Mono" "vera Sans YuanTi Mono" 14 16)))
+  (gnu/linux (set-font "monofur" "vera Sans YuanTi Mono" 20 20)
+	     ;; (mapc
+	     ;;  (lambda (face)
+	     ;; 	(set-face-attribute face nil :weight 'normal :underline nil))
+	     ;;  (face-list))
+	     ))
 
 ;;; easypg，emacs 自带
 (require 'epa-file)
@@ -393,7 +398,12 @@
 (require 'tls)
 (defun erc-start ()
   (interactive)
-  (erc-tls :server "irc.freenode.net" :port 6697 :nick "cfy"))
+  (erc-tls :server "irc.freenode.net" :port 6697 :nick "cfy")
+  ;; (mapc
+  ;;  (lambda (face)
+  ;;    (set-face-attribute face nil :weight 'normal :underline nil))
+  ;;  (face-list))
+  )
 (require 'erc-log)
 (setq erc-log-file-coding-system 'utf-8)
 (setq erc-enable-logging 'erc-log-all-but-server-buffers)
@@ -674,12 +684,6 @@ mentioned in an erc channel" t)
 
 ;;; use woman instead of man
 (defalias 'man 'woman)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 ;;; org export beamer
 (require 'org-export-beamer)
