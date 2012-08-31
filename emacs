@@ -11,7 +11,6 @@
 ;;load-path
 (cond ((eq system-type 'gnu/linux)
        (add-to-list 'load-path "~/.lisp")
-       (add-to-list 'load-path "~/.lisp/google-weather-el")
        (add-to-list 'load-path "~/gits/elisp/")
        ;; (load (expand-file-name "~/quicklisp/slime-helper.el"))
        )
@@ -585,7 +584,7 @@ mentioned in an erc channel" t)
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(erc-modules (quote (autojoin button completion fill irccontrols list log match menu move-to-prompt netsplit networks noncommands readonly ring services stamp track)))
- '(org-agenda-files (quote ("~/gits/smart-car/smart-car.org" "~/orgs/java.org" "~/orgs/weather.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org"))))
+ '(org-agenda-files (quote ("~/gits/smart-car/smart-car.org" "~/orgs/java.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org"))))
 
 ;; ;;; fast-paren-mode
 ;; (require 'fast-paren-mode)
@@ -681,7 +680,6 @@ mentioned in an erc channel" t)
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(require 'org-google-weather)
 
 ;;; org export beamer
 (require 'org-export-beamer)
