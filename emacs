@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-09-01 00:05:46 cfy>
+;; Time-stamp: <2012-09-01 22:58:59 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -227,11 +227,10 @@
 		      (font-spec :family chinese :size chinese-size))))
 (ecase system-type
   (gnu/linux (set-font "monofur" "vera Sans YuanTi Mono" 20 20)
-	     ;; (mapc
-	     ;;  (lambda (face)
-	     ;; 	(set-face-attribute face nil :weight 'normal :underline nil))
-	     ;;  (face-list))
-	     ))
+	     (mapc
+	      (lambda (face)
+	     	(set-face-attribute face nil :weight 'normal :underline nil))
+	      (face-list))))
 
 ;;; easypg，emacs 自带
 (require 'epa-file)
@@ -399,11 +398,11 @@
 (defun erc-start ()
   (interactive)
   (erc-tls :server "irc.freenode.net" :port 6697 :nick "cfy")
-  ;; (mapc
-  ;;  (lambda (face)
-  ;;    (set-face-attribute face nil :weight 'normal :underline nil))
-  ;;  (face-list))
-  )
+  (mapc
+   (lambda (face)
+     (set-face-attribute face nil :weight 'normal :underline nil))
+   (face-list)))
+
 (require 'erc-log)
 (setq erc-log-file-coding-system 'utf-8)
 (setq erc-enable-logging 'erc-log-all-but-server-buffers)
