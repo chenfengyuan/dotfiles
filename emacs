@@ -226,11 +226,10 @@
     (set-fontset-font (frame-parameter nil 'font) charset
 		      (font-spec :family chinese :size chinese-size))))
 (ecase system-type
-  (gnu/linux (set-font "monofur" "vera Sans YuanTi Mono" 20 20)
-	     (mapc
-	      (lambda (face)
-	     	(set-face-attribute face nil :weight 'normal :underline nil))
-	      (face-list))))
+  (gnu/linux
+   (set-face-bold-p 'bold nil)
+   (set-face-underline-p 'bold nil)
+   (set-font "monofur" "vera Sans YuanTi Mono" 20 20)))
 
 ;;; easypg，emacs 自带
 (require 'epa-file)
