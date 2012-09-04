@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-09-01 22:58:59 cfy>
+;; Time-stamp: <2012-09-04 20:47:03 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -113,9 +113,9 @@
 
 
 
-
-;;iswitchb mode
-(iswitchb-mode)
+;;; ido
+(require 'ido)
+(ido-mode t)
 
 ;;ascii code display
 ;; (require 'ascii)
