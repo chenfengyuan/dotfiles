@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-09-04 20:47:03 cfy>
+;; Time-stamp: <2012-09-04 21:02:59 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -114,8 +114,12 @@
 
 
 ;;; ido
+(eval-when-compile (require 'cl))
 (require 'ido)
 (ido-mode t)
+(add-to-list 'load-path "~/.emacs.d/elpa/ido-better-flex-0.0.2")
+(require 'ido-better-flex)
+(ido-better-flex/enable)
 
 ;;ascii code display
 ;; (require 'ascii)
