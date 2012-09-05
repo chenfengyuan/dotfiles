@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-09-04 21:02:59 cfy>
+;; Time-stamp: <2012-09-05 19:10:57 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -596,7 +596,7 @@ mentioned in an erc channel" t)
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(erc-modules (quote (autojoin button completion fill irccontrols list log match menu move-to-prompt netsplit networks noncommands readonly ring services stamp track)))
- '(org-agenda-files (quote ("~/gits/smart-car/smart-car.org" "~/orgs/java.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org")))
+ '(org-agenda-files (quote ("~/orgs/java.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org")))
  '(org-enforce-todo-dependencies t))
 
 ;; ;;; fast-paren-mode
@@ -733,3 +733,9 @@ mentioned in an erc channel" t)
 ;;; auto change desktop background
 (require 'backgrounds)
 (backgrounds-toggle)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
