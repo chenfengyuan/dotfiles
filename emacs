@@ -229,15 +229,7 @@
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font) charset
 		      (font-spec :family chinese :size chinese-size))))
-(ecase system-type
-  (gnu/linux
-   (set-face-bold-p 'bold nil)
-   (set-face-underline-p 'bold nil)
-   (set-font "monofur" "vera Sans YuanTi Mono" 20 20)
-   (mapc
-   (lambda (face)
-     (set-face-attribute face nil :weight 'normal :underline nil))
-   (face-list))))
+
 
 ;;; easypg，emacs 自带
 (require 'epa-file)
@@ -756,3 +748,13 @@ mentioned in an erc channel" t)
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(ecase system-type
+  (gnu/linux
+   (set-face-bold-p 'bold nil)
+   (set-face-underline-p 'bold nil)
+   (set-font "monofur" "vera Sans YuanTi Mono" 20 20)
+   (mapc
+    (lambda (face)
+      (set-face-attribute face nil :weight 'normal :underline nil))
+    (face-list))))
