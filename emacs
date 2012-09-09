@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-09-09 15:12:31 cfy>
+;; Time-stamp: <2012-09-09 16:09:13 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -696,7 +696,9 @@ mentioned in an erc channel" t)
 	("p" "Postgraduate entrance exam" entry (file+headline "~/orgs/gtd.org" "postgraduate entrance exam")
 	 "* TODO %?\n")
 	("n" "NTU" entry (file+headline "~/orgs/gtd.org" "NTU")
-	 "* TODO %?\n")))
+	 "* TODO %?\n")
+	("m" "Todo" entry (file+headline "~/orgs/gtd.org" "Tasks")
+	 "* TODO %?[/] :movie:\n- [ ] download\n- [ ] watch\n- [ ] review")))
 
 ;;; latex compile command
 (setq LaTeX-command "xelatex")
