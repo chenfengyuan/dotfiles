@@ -354,10 +354,10 @@
        (setq reason nil))
   (erc-cmd-BAN nick)
   (erc-server-send (format "KICK %s %s %s"
-                            (erc-default-target)
-                            nick
-                            (or reason
-                                "Kicked (kickban)"))))
+			   (erc-default-target)
+			   nick
+			   (or reason
+			       "Kicked (kickban)"))))
 (defun erc-cmd-HOWMANY (&rest ignore)
   "Display how many users (and ops) the current channel has."
   (erc-display-message nil 'notice (current-buffer)
