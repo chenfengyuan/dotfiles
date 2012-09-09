@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-09-08 08:46:55 cfy>
+;; Time-stamp: <2012-09-09 15:05:35 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -738,3 +738,15 @@ mentioned in an erc channel" t)
 (require 'backgrounds)
 (backgrounds-toggle)
 
+;;; toggle emacs fullscreen by setting frame property
+;;; http://emacswiki.org/emacs/FullScreen
+;;; copy from Ivan Kanis
+(defun toggle-fullscreen ()
+  "Toggle full screen on X11"
+  (interactive)
+  (when (eq window-system 'x)
+    (set-frame-parameter
+     nil 'fullscreen
+     (when (not (frame-parameter nil 'fullscreen)) 'fullboth))))
+
+(global-set-key [f11] 'toggle-fullscreen)
