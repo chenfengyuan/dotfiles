@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-09-09 15:10:54 cfy>
+;; Time-stamp: <2012-09-09 15:12:31 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -600,7 +600,6 @@ mentioned in an erc channel" t)
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(elscreen-display-tab nil)
- '(erc-modules (quote (autojoin button completion fill irccontrols list log match menu move-to-prompt netsplit networks noncommands readonly ring services stamp track)))
  '(org-agenda-files (quote ("~/orgs/ielts.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org")))
  '(org-enforce-todo-dependencies t))
 
