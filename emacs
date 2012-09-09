@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-09-05 19:10:57 cfy>
+;; Time-stamp: <2012-09-08 08:46:55 cfy>
 
 ;;; for compile
 (eval-when-compile
@@ -233,7 +233,11 @@
   (gnu/linux
    (set-face-bold-p 'bold nil)
    (set-face-underline-p 'bold nil)
-   (set-font "monofur" "vera Sans YuanTi Mono" 20 20)))
+   (set-font "monofur" "vera Sans YuanTi Mono" 20 20)
+   (mapc
+   (lambda (face)
+     (set-face-attribute face nil :weight 'normal :underline nil))
+   (face-list))))
 
 ;;; easypg，emacs 自带
 (require 'epa-file)
@@ -733,9 +737,4 @@ mentioned in an erc channel" t)
 ;;; auto change desktop background
 (require 'backgrounds)
 (backgrounds-toggle)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
