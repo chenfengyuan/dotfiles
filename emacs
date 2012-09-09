@@ -596,7 +596,7 @@ mentioned in an erc channel" t)
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(erc-modules (quote (autojoin button completion fill irccontrols list log match menu move-to-prompt netsplit networks noncommands readonly ring services stamp track)))
- '(org-agenda-files (quote ("~/orgs/java.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org")))
+ '(org-agenda-files (quote ("~/orgs/ielts.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org")))
  '(org-enforce-todo-dependencies t))
 
 ;; ;;; fast-paren-mode
