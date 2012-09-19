@@ -1,17 +1,24 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-09-09 16:09:13 cfy>
+;; Time-stamp: <2012-09-19 12:52:41 chenfengyuan>
 
 ;;; for compile
+;;; elpa
+(if (eq emacs-major-version 24)
+    (progn (require 'package)
+	   (add-to-list 'package-archives
+			'("marmalade" . "http://marmalade-repo.org/packages/") t)
+	   (add-to-list 'package-archives '("marmalade"
+					    . "http://marmalade-repo.org/packages/") t)))
 (eval-when-compile
   (require 'dired))
-;;更改frame title 的显示信息
-(setq frame-title-format "%I\t%b\temacs42")
 
 ;;load-path
-(cond ((eq system-type 'gnu/linux)
+(cond ((or (eq system-type 'gnu/linux)
+	   (eq system-type 'darwin))
        (add-to-list 'load-path "~/.lisp")
        (add-to-list 'load-path "~/gits/elisp/")
+       ;; (load "~/.emacs.d/elpa/subdirs.el")
        ;; (load (expand-file-name "~/quicklisp/slime-helper.el"))
        )
       ((eq system-type 'windows-nt)))
@@ -19,6 +26,9 @@
 ;;; ir-black theme
 (if (eq emacs-major-version 24)
     (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/ir-black-theme-1.0/"))
+
+(if (eq system-type 'darwin)
+    (require 'terminal-notifier))
 
 ;;补全
 ;;在auto-complete不能不全的地方使用
@@ -126,12 +136,14 @@
 
 
 ;;auto-complete
+(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-1.4/")
+(add-to-list 'load-path "~/.emacs.d/elpa/popup-0.5/")
 (require 'auto-complete)
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
-;;(setq-default ac-sources '(ac-source-words-in-same-mode-buffers))
-;;(add-hook 'emacs-lisp-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-symbols)))
-;;(add-hook 'auto-complete-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-filename)))
+(setq-default ac-sources '(ac-source-words-in-same-mode-buffers))
+(add-hook 'emacs-lisp-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-symbols)))
+(add-hook 'auto-complete-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-filename)))
 (set-face-background 'ac-candidate-face "lightgray")
 (set-face-underline-p 'ac-candidate-face "darkgray")
 (set-face-background 'ac-selection-face "steelblue")
@@ -230,6 +242,15 @@
     (set-fontset-font (frame-parameter nil 'font) charset
 		      (font-spec :family chinese :size chinese-size))))
 
+(ecase system-type
+  (gnu/linux
+   (set-face-bold-p 'bold nil)
+   (set-face-underline-p 'bold nil)
+   (set-font "monofur" "vera Sans YuanTi Mono" 20 20))
+  (darwin
+   (set-face-bold-p 'bold nil)
+   (set-face-underline-p 'bold nil)
+   (set-font "monofur" "STHeiti" 20 20)))
 
 ;;; easypg，emacs 自带
 (require 'epa-file)
@@ -241,45 +262,14 @@
 ;; 允许自动保存
 (setq epa-file-inhibit-auto-save nil)
 ;; epa只能用gnupg 1.0
-(setq epg-gpg-program "~/.bin/gpg")
+(setq epg-gpg-program "/usr/local/bin/gpg")
 
-;;; ccrypt，需要安装 ccrypt 包
-;;(require 'jka-compr-ccrypt)
-
-
-;;sawfish
-
-;; (autoload 'sawfish-mode "sawfish" "sawfish-mode" t)
-;; (setq auto-mode-alist (cons '("\\.sawfishrc$"  . sawfish-mode) auto-mode-alist)
-;;       auto-mode-alist (cons '("\\.jl$"         . sawfish-mode) auto-mode-alist)
-;;       auto-mode-alist (cons '("\\.sawfish/rc$" . sawfish-mode) auto-mode-alist))
-
-;;set opera as the default browser 
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "opera")
-
-;; ;;; set w3m as the default browser
-;; (setq browse-url-browser-function 'w3m-browse-url)
-;; (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
-;;  ;; optional keyboard short-cut
-;; (setq w3m-use-cookies t)
 
 (global-set-key "\C-xm" 'browse-url-at-point)
 
-;;linum-mode
-;; global-linum-mode slow emcas down
-;; (global-linum-mode t)
 
-;;cursor
+;; don't blink cursor
 (blink-cursor-mode -1)
-
-;; ;;pinbar
-;; (require 'pinbar)
-;; (global-set-key (kbd "M-0") 'pinbar-add)
-;; (pinbar-mode t)
-
-;;paste2
-(require 'paste2)
 
 ;;emacs server
 (server-start)
@@ -288,11 +278,11 @@
 ;; (menu-bar-mode -1)
 (tool-bar-mode -1)
 
-;;elscreen
-(require 'elscreen)
-(elscreen-set-prefix-key "\C-l")
+;; ;;elscreen
+;; (require 'elscreen)
+;; (elscreen-set-prefix-key "\C-l")
 
-(global-set-key "" (quote recenter-top-bottom))
+;; (global-set-key "" (quote recenter-top-bottom))
 
 ;;desktop save
 (desktop-save-mode 1)
@@ -390,17 +380,13 @@
 (setq erc-email-userid "cfy")
 (setq erc-autojoin-channels-alist
       '(("freenode.net"
-	 "#gentoo-cn" "#lisp-zh" "#c-zh" "#ubuntu-cn"
-	 "#emacs" "#lisp")))
+	 "#lisp-zh" "#ubuntu-cn"
+	 "#emacs" "#mac" "#lisp")))
 (setq erc-autojoin-timing 'ident)
 (require 'tls)
 (defun erc-start ()
   (interactive)
-  (erc-tls :server "irc.freenode.net" :port 6697 :nick "cfy")
-  (mapc
-   (lambda (face)
-     (set-face-attribute face nil :weight 'normal :underline nil))
-   (face-list)))
+  (erc-tls :server "irc.freenode.net" :port 6697 :nick "cfy"))
 
 (require 'erc-log)
 (setq erc-log-file-coding-system 'utf-8)
@@ -419,12 +405,6 @@
 ;;      (add-to-list 'erc-modules 'highlight-nicknames)
 ;;      (erc-update-modules))
 
-;;; erc nick notify
-(autoload 'erc-nick-notify-mode "erc-nick-notify"
-  "Minor mode that calls `erc-nick-notify-cmd' when his nick gets
-mentioned in an erc channel" t)
-(eval-after-load 'erc '(erc-nick-notify-mode t))
-
 ;; (require 'tls)
 ;; (defun start-irc ()
 ;;    "Connect to IRC."
@@ -435,10 +415,10 @@ mentioned in an erc channel" t)
 ;;                                        ("oftc.net" "#debian"))))
 
 ;; (setq inferior-lisp-program "/usr/bin/sbcl")
-(add-to-list 'load-path "/home/cfy/quicklisp/dists/quicklisp/software/slime-20120703-cvs/")
+(add-to-list 'load-path "~/quicklisp/dists/quicklisp/software/slime-20120909-cvs/")
 (require 'slime)
 (slime-setup '(slime-fancy))
-(setq inferior-lisp-program "ccl -K utf-8"
+(setq inferior-lisp-program "~/ccl/dx86cl64 -K utf-8"
       slime-net-coding-system 'utf-8-unix
       common-lisp-hyperspec-root "file:///usr/share/doc/hyperspec-7.0-r2/HyperSpec/"
       lisp-simple-loop-indentation 1
@@ -488,12 +468,12 @@ mentioned in an erc channel" t)
 ;;; sbcl
 (defun sbcl()
   (interactive)
-  (slime-start* '(:name "sbcl" :program "/home/cfy/.bin/sbcl" :program-args ("--no-sysinit"))))
+  (slime-start* '(:name "sbcl" :program "~/.bin/sbcl" :program-args ("--no-sysinit"))))
 
 ;;; allgero cl
 (defun acl()
   (interactive)
-  (slime-start* '(:program "/home/cfy/.acl81.64/alisp")))
+  (slime-start* '(:program "~/.acl81.64/alisp")))
 
 ;; slime tab indent
 (defun lisp-indent-or-complete(&optional arg)
@@ -510,7 +490,7 @@ mentioned in an erc channel" t)
 
 ;;erc-start
 ;; (erc-start)
-
+(add-to-list 'load-path "~/.emacs.d/elpa/paredit-22/")
 (require 'ielm)
 (require 'paredit)
 (dolist (mode-map `(,slime-mode-map ,emacs-lisp-mode-map))
@@ -572,13 +552,7 @@ mentioned in an erc channel" t)
 ;;; enable primary selection in emacs24
 (setq x-select-enable-primary t)
 
-;;; elpa
-(if (eq emacs-major-version 24)
-    (progn (require 'package)
-	   (add-to-list 'package-archives
-			'("marmalade" . "http://marmalade-repo.org/packages/") t)
-	   (add-to-list 'package-archives '("marmalade"
-					    . "http://marmalade-repo.org/packages/") t)))
+
 
 ;;; active savehist mode
 (savehist-mode t)
@@ -593,7 +567,8 @@ mentioned in an erc channel" t)
  ;; If there is more than one, they won't work right.
  '(elscreen-display-tab nil)
  '(org-agenda-files (quote ("~/orgs/ielts.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org")))
- '(org-enforce-todo-dependencies t))
+ '(org-enforce-todo-dependencies t)
+ '(org-show-notification-handler (lambda (message) (notify "Org-mode" message))))
 
 ;; ;;; fast-paren-mode
 ;; (require 'fast-paren-mode)
@@ -668,7 +643,7 @@ mentioned in an erc channel" t)
 ;; (display-time)
 
 ;;; pretty lambda
-(add-to-list 'load-path "/home/cfy/.emacs.d/elpa/pretty-lambdada-22.0/")
+(add-to-list 'load-path "~/.emacs.d/elpa/pretty-lambdada-22.0/")
 (require 'pretty-lambdada)
 (pretty-lambda-for-modes)
 
@@ -697,7 +672,7 @@ mentioned in an erc channel" t)
 	 "* TODO %?\n")
 	("n" "NTU" entry (file+headline "~/orgs/gtd.org" "NTU")
 	 "* TODO %?\n")
-	("m" "Todo" entry (file+headline "~/orgs/gtd.org" "Tasks")
+	("m" "Movie" entry (file+headline "~/orgs/gtd.org" "Tasks")
 	 "* TODO %?[/] :movie:\n- [ ] download\n- [ ] watch\n- [ ] review")))
 
 ;;; latex compile command
@@ -707,14 +682,14 @@ mentioned in an erc channel" t)
 (require 'slime-tramp)
 (setq slime-to-lisp-filename-function
       (lambda (filename)
-	(if (or (null (slime-connected-p)) (string= (slime-machine-instance) "cfy-notebook"))
+	(if (or (null (slime-connected-p)) (string= (slime-machine-instance) "Fengyuans-MacBook-Air"))
 	    (convert-standard-filename filename)
 	  (slime-tramp-to-lisp-filename filename))))
 ;; (setq slime-to-lisp-filename 'convert-standard-filename)
 
 (setq slime-from-lisp-filename-function
       (lambda (filename)
-	(if (or (null (slime-connected-p)) (string= (slime-machine-instance) "cfy-notebook"))
+	(if (or (null (slime-connected-p)) (string= (slime-machine-instance) "Fengyuans-MacBook-Air"))
 	    (identity filename)
 	  (slime-tramp-from-lisp-filename filename))))
 ;; (setq slime-from-lisp-filename-function 'identify)
@@ -727,10 +702,6 @@ mentioned in an erc channel" t)
 					      :remote-host "rpi"
 					      :username "cfy")))
 (put 'downcase-region 'disabled nil)
-
-;;; auto change desktop background
-(require 'backgrounds)
-(backgrounds-toggle)
 
 ;;; toggle emacs fullscreen by setting frame property
 ;;; http://emacswiki.org/emacs/FullScreen
@@ -751,12 +722,4 @@ mentioned in an erc channel" t)
  ;; If there is more than one, they won't work right.
  )
 
-(ecase system-type
-  (gnu/linux
-   (set-face-bold-p 'bold nil)
-   (set-face-underline-p 'bold nil)
-   (set-font "monofur" "vera Sans YuanTi Mono" 20 20)
-   (mapc
-    (lambda (face)
-      (set-face-attribute face nil :weight 'normal :underline nil))
-    (face-list))))
+(ielm)

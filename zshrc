@@ -68,7 +68,6 @@ zstyle ':completion:*' squeeze-shlashes 'yes'
 zstyle ':completion::complete:*' '\\'
 
 #彩色补全菜单 
-eval $(dircolors -b) 
 export ZLSCOLORS="${LS_COLORS}"
 zmodload zsh/complist
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -144,9 +143,9 @@ bindkey "\t" user-complete
 # {{{1 command aliases
 alias  cp='cp -i'
 alias  mv='mv -iv'
-alias  rm='rm -Iv'
-alias  ls='ls --classify --color=auto'
-alias  ll="ls --classify --color=auto -l"
+alias  rm='rm -v'
+alias  ls='ls -G'
+alias  ll="ls -G -l"
 alias  grep='grep --color=auto'
 alias  e="emacsclient -n"
 alias  B='|sed -r "s:\x1B\[[0-9;]*[mK]::g"'
