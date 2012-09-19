@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-09-19 12:52:41 chenfengyuan>
+;; Time-stamp: <2012-09-19 22:18:43 chenfengyuan>
 
 ;;; for compile
 ;;; elpa
@@ -18,6 +18,7 @@
 	   (eq system-type 'darwin))
        (add-to-list 'load-path "~/.lisp")
        (add-to-list 'load-path "~/gits/elisp/")
+       (add-to-list 'load-path "~/.lisp/apel-10.8")
        ;; (load "~/.emacs.d/elpa/subdirs.el")
        ;; (load (expand-file-name "~/quicklisp/slime-helper.el"))
        )
@@ -278,11 +279,11 @@
 ;; (menu-bar-mode -1)
 (tool-bar-mode -1)
 
-;; ;;elscreen
-;; (require 'elscreen)
-;; (elscreen-set-prefix-key "\C-l")
+;;elscreen
+(require 'elscreen)
+(elscreen-set-prefix-key "\C-l")
 
-;; (global-set-key "" (quote recenter-top-bottom))
+(global-set-key "" (quote recenter-top-bottom))
 
 ;;desktop save
 (desktop-save-mode 1)
@@ -723,3 +724,4 @@
  )
 
 (ielm)
+(require 'numbers)
