@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-09-21 12:34:44 chenfengyuan>
+;; Time-stamp: <2012-09-22 13:26:50 chenfengyuan>
 
 ;;; for compile
 ;;; elpa
@@ -726,6 +726,16 @@
 
 ;; change default frame width
 (set-frame-width (selected-frame) 100)
+
+;; imaxima
+(add-to-list 'exec-path "/usr/local/bin/")
+(add-to-list 'exec-path "/usr/texbin/")
+(add-to-list 'load-path "/usr/local/share/maxima/5.27.0/emacs/")
+(autoload 'maxima-mode "maxima" "Maxima mode" t)
+(autoload 'imaxima "imaxima" "Frontend for maxima with Image support" t)
+(autoload 'maxima "maxima" "Maxima interaction" t)
+(autoload 'imath-mode "imath" "Imath mode for math formula input" t)
+(setq imaxima-use-maxima-mode-flag t)
 
 ;; move to the center of display
 (let ((dh (display-pixel-height))
