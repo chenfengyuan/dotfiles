@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-09-19 22:18:43 chenfengyuan>
+;; Time-stamp: <2012-09-21 12:34:44 chenfengyuan>
 
 ;;; for compile
 ;;; elpa
@@ -249,8 +249,6 @@
    (set-face-underline-p 'bold nil)
    (set-font "monofur" "vera Sans YuanTi Mono" 20 20))
   (darwin
-   (set-face-bold-p 'bold nil)
-   (set-face-underline-p 'bold nil)
    (set-font "monofur" "STHeiti" 20 20)))
 
 ;;; easypg，emacs 自带
@@ -303,7 +301,7 @@
 	  (lambda () (setq truncate-lines nil)))
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-refile-targets '(("gtd.org" :maxlevel . 1)))
-(require 'org-movie)
+(require 'org-film)
 ;;; display calendar in org agenda
 (setq org-agenda-include-diary t)
 ;; (require 'socks)
@@ -673,8 +671,8 @@
 	 "* TODO %?\n")
 	("n" "NTU" entry (file+headline "~/orgs/gtd.org" "NTU")
 	 "* TODO %?\n")
-	("m" "Movie" entry (file+headline "~/orgs/gtd.org" "Tasks")
-	 "* TODO %?[/] :movie:\n- [ ] download\n- [ ] watch\n- [ ] review")))
+	("f" "Film" entry (file+headline "~/orgs/gtd.org" "Tasks")
+	 "* TODO %?[/] :film:\n- [ ] download\n- [ ] watch\n- [ ] review")))
 
 ;;; latex compile command
 (setq LaTeX-command "xelatex")
@@ -725,3 +723,13 @@
 
 (ielm)
 (require 'numbers)
+
+;; change default frame width
+(set-frame-width (selected-frame) 100)
+
+;; move to the center of display
+(let ((dh (display-pixel-height))
+      (dw (display-pixel-width))
+      (fh (frame-pixel-height))
+      (fw (frame-pixel-width)))
+  (set-frame-position (selected-frame) (- (/ dw 2) (/ fw 2)) (- (/ dh 2) (/ fh 2) 42)))
