@@ -1,6 +1,6 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-09-24 15:33:20 chenfengyuan>
+;; Time-stamp: <2012-10-09 11:43:15 chenfengyuan>
 
 ;;; for compile
 ;;; elpa
@@ -8,8 +8,8 @@
     (progn (require 'package)
 	   (add-to-list 'package-archives
 			'("marmalade" . "http://marmalade-repo.org/packages/") t)
-	   (add-to-list 'package-archives '("marmalade"
-					    . "http://marmalade-repo.org/packages/") t)))
+	   (add-to-list 'package-archives
+              '("melpa" . "http://melpa.milkbox.net/packages/") t)))
 (eval-when-compile
   (require 'dired))
 
