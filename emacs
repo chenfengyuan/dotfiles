@@ -565,7 +565,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(elscreen-display-tab nil)
- '(org-agenda-files (quote ("~/orgs/birthday.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/misc.org" "~/orgs/todo.org")))
+ '(org-agenda-files (quote ("~/orgs/birthday.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/todo.org")))
  '(org-enforce-todo-dependencies t)
  '(org-show-notification-handler (lambda (message) (notify "Org-mode" message))))
 
