@@ -1,5 +1,5 @@
 # -*- mode: shell-script;-*-
-export LANG=en_US.utf-8
+export LANG=en_US.UTF-8
 export PATH=$HOME/.bin:~/perl5/bin:$PATH
 export PERL5LIB=~/perl5/lib/perl5
 # export PATH="/usr/lib/ccache/bin/:/usr/lib/distcc/bin/:${PATH}"
