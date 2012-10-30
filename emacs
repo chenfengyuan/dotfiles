@@ -419,7 +419,7 @@
 (slime-setup '(slime-fancy))
 (setq inferior-lisp-program "~/ccl/dx86cl64 -K utf-8"
       slime-net-coding-system 'utf-8-unix
-      common-lisp-hyperspec-root "file:///usr/share/doc/hyperspec-7.0-r2/HyperSpec/"
+      common-lisp-hyperspec-root "/Users/chenfengyuan/Downloads/HyperSpec/"
       lisp-simple-loop-indentation 1
       lisp-loop-keyword-indentation 6
       lisp-loop-forms-indentation 6)
