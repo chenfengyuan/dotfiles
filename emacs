@@ -1,6 +1,5 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
-;; Time-stamp: <2012-10-09 11:43:15 chenfengyuan>
 
 ;;; for compile
 ;;; elpa
@@ -76,9 +75,6 @@
 
 ;;设个大点的kill ring，默认为60。
 (setq kill-ring-max 200)
-
-;;time-stamp
-(add-hook 'write-file-hooks 'time-stamp)
 
 ;;backup settings
 (setq make-backup-files t)
