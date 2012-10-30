@@ -284,7 +284,7 @@
 (global-set-key "" (quote recenter-top-bottom))
 
 ;;desktop save
-(desktop-save-mode 1)
+;; (desktop-save-mode nil)
 
 ;;org mode
 (define-key global-map "\C-cl" 'org-store-link)
