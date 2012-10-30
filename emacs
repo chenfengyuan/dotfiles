@@ -566,6 +566,14 @@
  ;; If there is more than one, they won't work right.
  '(elscreen-display-tab nil)
  '(org-agenda-files (quote ("~/orgs/birthday.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/todo.org")))
+ '(org-capture-templates (quote (("g" "graduation project" entry (file+headline "~/orgs/gtd.org" "graduation project") "* TODO %?") ("t" "Todo" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?
+") ("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate") "* TODO %?
+") ("p" "Postgraduate entrance exam" entry (file+headline "~/orgs/gtd.org" "postgraduate entrance exam") "* TODO %?
+") ("n" "NTU" entry (file+headline "~/orgs/gtd.org" "NTU") "* TODO %?
+") ("f" "Film" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?[/] :film:
+- [ ] download
+- [ ] watch
+- [ ] review"))))
  '(org-enforce-todo-dependencies t)
  '(org-show-notification-handler (lambda (message) (notify "Org-mode" message))))
 
