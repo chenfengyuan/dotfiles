@@ -30,6 +30,7 @@
 (if (eq system-type 'darwin)
     (require 'terminal-notifier))
 ;; swap command and option under os x
+(eval-when-compile (require 'cl))
 (when (eq system-type 'darwin)
   (rotatef mac-command-modifier mac-option-modifier))
 
