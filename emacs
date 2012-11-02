@@ -29,6 +29,9 @@
 
 (if (eq system-type 'darwin)
     (require 'terminal-notifier))
+;; swap command and option in emacs
+(when (eq system-type 'darwin)
+  (rotatef mac-command-modifier mac-option-modifier))
 
 ;;补全
 ;;在auto-complete不能不全的地方使用
