@@ -286,7 +286,7 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 ;;(define-key global-map "\M-/" 'org-complete)
-(setq org-log-done t)
+
 (setq ac-modes
       (append ac-modes '(org-mode objc-mode jde-mode sql-mode
                                   change-log-mode text-mode
