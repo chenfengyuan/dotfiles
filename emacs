@@ -736,9 +736,10 @@
 (set-frame-width (selected-frame) 100)
 
 ;; imaxima
-(add-to-list 'exec-path "/usr/local/bin/")
 (add-to-list 'exec-path "/usr/texbin/")
-(add-to-list 'load-path "/usr/local/share/maxima/5.27.0/emacs/")
+(add-to-list 'exec-path "/usr/local/bin")
+(setenv "PATH" "/Users/chenfengyuan/.bin:/Users/chenfengyuan/perl5/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/texbin")
+(add-to-list 'load-path "/usr/local/Cellar/maxima/5.28.0/share/maxima/5.28.0/emacs")
 (autoload 'maxima-mode "maxima" "Maxima mode" t)
 (autoload 'imaxima "imaxima" "Frontend for maxima with Image support" t)
 (autoload 'maxima "maxima" "Maxima interaction" t)
