@@ -3,6 +3,7 @@
 
 ;;; for compile
 ;;; elpa
+(package-initialize)
 (if (eq emacs-major-version 24)
     (progn (require 'package)
 	   (add-to-list 'package-archives
@@ -137,8 +138,6 @@
 
 
 ;;auto-complete
-(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-1.4/")
-(add-to-list 'load-path "~/.emacs.d/elpa/popup-0.5/")
 (require 'auto-complete)
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
@@ -489,7 +488,6 @@
 
 ;;erc-start
 ;; (erc-start)
-(add-to-list 'load-path "~/.emacs.d/elpa/paredit-22/")
 (require 'ielm)
 (require 'paredit)
 (dolist (mode-map `(,slime-mode-map ,emacs-lisp-mode-map))
@@ -650,7 +648,6 @@
 ;; (display-time)
 
 ;;; pretty lambda
-(add-to-list 'load-path "~/.emacs.d/elpa/pretty-lambdada-22.0/")
 (require 'pretty-lambdada)
 (pretty-lambda-for-modes)
 
