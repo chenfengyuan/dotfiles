@@ -749,3 +749,6 @@
       (fh (frame-pixel-height))
       (fw (frame-pixel-width)))
   (set-frame-position (selected-frame) (- (/ dw 2) (/ fw 2)) (- (/ dh 2) (/ fh 2) 42)))
+
+;; golden-ratio
+(golden-ratio-enable)
