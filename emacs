@@ -782,9 +782,11 @@
  /usr/local/include
  /Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include
  /usr/include
+/usr/local/Cellar/opencv/2.4.2/include/
  .
 "
                )))
+(setq yas-prompt-functions '(yas-ido-prompt yas-no-prompt))
 
 ;; smart-mark
 (require 'smart-mark)
