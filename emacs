@@ -771,7 +771,7 @@
 ;; ac-source-gtags
 (my-ac-config)
 (define-key ac-mode-map  [(control tab)] 'auto-complete)
-
+(setq ac-auto-start nil)
 (setq ac-clang-flags
       (mapcar (lambda (item)(concat "-I" item))
               (split-string
