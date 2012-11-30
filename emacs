@@ -563,7 +563,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(elscreen-display-tab nil)
- '(org-agenda-files (quote ("~/orgs/birthday.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/todo.org")))
+ '(org-agenda-files (quote ("~/Undergraduate/graduate-project/face-recognition.org" "~/orgs/birthday.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/todo.org")))
  '(org-capture-templates (quote (("g" "graduation project" entry (file+headline "~/orgs/gtd.org" "graduation project") "* TODO %?") ("t" "Todo" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?
 ") ("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate") "* TODO %?
 ") ("p" "Postgraduate entrance exam" entry (file+headline "~/orgs/gtd.org" "postgraduate entrance exam") "* TODO %?
@@ -571,7 +571,7 @@
 ") ("f" "Film" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?[/] :film:
 - [ ] download
 - [ ] watch
-- [ ] review"))))
+- [ ] review"))) t)
  '(org-enforce-todo-dependencies t)
  '(org-show-notification-handler (lambda (message) (notify "Org-mode" message))))
 
