@@ -790,3 +790,6 @@
 
 ;; smart-mark
 (require 'smart-mark)
+
+;; next specfial day
+(load "~/gits/elisp/next-spec-day")
