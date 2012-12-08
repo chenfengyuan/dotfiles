@@ -762,6 +762,7 @@
 
 ;; auto-complete-clang
 (require 'yasnippet)
+(pop yas-snippet-dirs)
 (yas-global-mode)
 (require 'auto-complete-clang)
 (defun my-ac-config ()
