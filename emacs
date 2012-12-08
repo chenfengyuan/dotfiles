@@ -797,3 +797,6 @@
 
 ;; next specfial day
 (load "~/gits/elisp/next-spec-day")
+
+;; emacs c source directory
+(setq find-function-C-source-directory "~/tmp/emacs/emacs-24.2/src/")
