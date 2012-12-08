@@ -9,13 +9,16 @@
 	   (add-to-list 'package-archives
 			'("marmalade" . "http://marmalade-repo.org/packages/") t)
 	   (add-to-list 'package-archives
-              '("melpa" . "http://melpa.milkbox.net/packages/") t)))
+              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+	   (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)))
 (eval-when-compile
   (require 'dired))
 
 ;;load-path
 (cond ((or (eq system-type 'gnu/linux)
 	   (eq system-type 'darwin))
+       (add-to-list 'load-path "~/.emacs.d/org-7.9.2/lisp/")
+       (add-to-list 'load-path "~/.emacs.d/org-7.9.2/contrib/")
        (add-to-list 'load-path "~/.lisp")
        (add-to-list 'load-path "~/gits/elisp/")
        (add-to-list 'load-path "~/.lisp/apel-10.8")
