@@ -32,7 +32,7 @@
     (require 'terminal-notifier))
 ;; swap command and option under os x
 (eval-when-compile (require 'cl))
-(when (eq system-type 'darwin)
+(when (and window-system (eq system-type 'darwin))
   (rotatef mac-command-modifier mac-option-modifier))
 
 ;;补全
@@ -128,7 +128,9 @@
 ;;; ido
 (eval-when-compile (require 'cl))
 (require 'ido)
-(ido-mode t)
+(if window-system
+    (ido-mode t)
+  (iswitchb-mode))
 ;; (add-to-list 'load-path "~/.emacs.d/elpa/ido-better-flex-0.0.2")
 ;; (require 'ido-better-flex)
 ;; (ido-better-flex/enable)
@@ -234,21 +236,21 @@
 ;; http://dto.github.com/notebook/require-cl.html#sec-8
 ;; http://stackoverflow.com/questions/5019724/in-emacs-what-does-this-error-mean-warning-cl-package-required-at-runtime
 (eval-when-compile (require 'cl))
+(when window-system
+  (defun set-font (english chinese english-size chinese-size)
+    (set-face-attribute 'default nil :font
+			(format "%s:pixelsize=%d" english english-size))
+    (dolist (charset '(kana han symbol cjk-misc bopomofo))
+      (set-fontset-font (frame-parameter nil 'font) charset
+			(font-spec :family chinese :size chinese-size))))
 
-(defun set-font (english chinese english-size chinese-size)
-  (set-face-attribute 'default nil :font
-		      (format "%s:pixelsize=%d" english english-size))
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))
-    (set-fontset-font (frame-parameter nil 'font) charset
-		      (font-spec :family chinese :size chinese-size))))
-
-(ecase system-type
-  (gnu/linux
-   (set-face-bold-p 'bold nil)
-   (set-face-underline-p 'bold nil)
-   (set-font "monofur" "vera Sans YuanTi Mono" 20 20))
-  (darwin
-   (set-font "monofur" "STHeiti" 20 20)))
+  (ecase system-type
+    (gnu/linux
+     (set-face-bold-p 'bold nil)
+     (set-face-underline-p 'bold nil)
+     (set-font "monofur" "vera Sans YuanTi Mono" 20 20))
+    (darwin
+     (set-font "monofur" "STHeiti" 20 20))))
 
 ;;; easypg，emacs 自带
 (require 'epa-file)
@@ -274,7 +276,8 @@
 
 ;;; turn off tool bar
 ;; (menu-bar-mode -1)
-(tool-bar-mode -1)
+(when window-system
+  (tool-bar-mode -1))
 
 ;;elscreen
 (require 'elscreen)
@@ -600,7 +603,8 @@
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 ;;; disable scrool bar
-(scroll-bar-mode -1)
+(when window-system
+  (scroll-bar-mode -1))
 
 ;;; zone
 ;; (require 'zone)
