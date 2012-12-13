@@ -804,3 +804,12 @@
 
 ;; emacs c source directory
 (setq find-function-C-source-directory "~/tmp/emacs/emacs-24.2/src/")
+
+;; copy from [[http://nullprogram.com/blog/2009/05/28/][Elisp Running Time Macro]]
+(defmacro measure-time (&rest body)
+  "Measure and return the running time of the code block."
+  (declare (indent defun))
+  (let ((start (make-symbol "start")))
+    `(let ((,start (float-time)))
+       ,@body
+       (- (float-time) ,start))))
