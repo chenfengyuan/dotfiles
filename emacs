@@ -309,6 +309,9 @@
 (require 'org-film)
 ;;; display calendar in org agenda
 (setq org-agenda-include-diary t)
+;; org-depend
+(require 'org-depend)
+(setq org-depend-find-next-options "from-current,priority-up")
 ;; (require 'socks)
 ;; (setq socks-noproxy '("localhost"))
 ;; (setq socks-override-functions 1)
