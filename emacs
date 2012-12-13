@@ -18,7 +18,7 @@
 (cond ((or (eq system-type 'gnu/linux)
 	   (eq system-type 'darwin))
        (add-to-list 'load-path "~/.emacs.d/org-7.9.2/lisp/")
-       (add-to-list 'load-path "~/.emacs.d/org-7.9.2/contrib/")
+       (add-to-list 'load-path "~/.emacs.d/org-7.9.2/contrib/lisp/")
        (add-to-list 'load-path "~/.lisp")
        (add-to-list 'load-path "~/gits/elisp/")
        (add-to-list 'load-path "~/.lisp/apel-10.8")
