@@ -419,7 +419,7 @@
 ;;                                        ("oftc.net" "#debian"))))
 
 ;; (setq inferior-lisp-program "/usr/bin/sbcl")
-(add-to-list 'load-path "~/quicklisp/dists/quicklisp/software/slime-20120909-cvs/")
+(add-to-list 'load-path "~/quicklisp/dists/quicklisp/software/slime-20121125-cvs/")
 (require 'slime)
 (slime-setup '(slime-fancy))
 (setq inferior-lisp-program "~/ccl/dx86cl64 -K utf-8"
