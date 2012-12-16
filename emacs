@@ -572,6 +572,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(elscreen-display-tab nil)
+ '(js2-auto-indent-p t)
+ '(js2-basic-offset 8)
+ '(js2-bounce-indent-p t)
+ '(js2-enter-indents-newline t)
+ '(js2-indent-on-enter-key t)
  '(org-agenda-files (quote ("~/Undergraduate/graduate-project/face-recognition.org" "~/orgs/birthday.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/todo.org")))
  '(org-capture-templates (quote (("g" "graduation project" entry (file+headline "~/orgs/gtd.org" "graduation project") "* TODO %?") ("t" "Todo" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?
 ") ("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate") "* TODO %?
@@ -816,3 +821,29 @@
     `(let ((,start (float-time)))
        ,@body
        (- (float-time) ,start))))
+
+;; nodejs-mode
+(add-to-list 'load-path "~/.emacs.d/nodejs-mode/")
+(require 'nodejs-mode)
+
+;; lintnode
+(let ((lintnode-path "/Users/chenfengyuan/.emacs.d/lintnode/"))
+  (add-to-list 'load-path lintnode-path)
+  (require 'flymake-jslint)
+  ;; Make sure we can find the lintnode executable
+  (setq lintnode-location lintnode-path)
+  ;; JSLint can be... opinionated
+  (setq lintnode-jslint-excludes (list 'nomen 'undef 'plusplus 'onevar 'white))
+  ;; Start the server when we first open a js file and start checking
+  (when (fboundp 'lintnode-hook)
+    (add-hook 'js-mode-hook
+	      (lambda ()
+		(lintnode-hook)))
+    (add-hook 'js2-mode-hook
+	      (lambda ()
+		(lintnode-hook)))))
+
+(require 'flymake-cursor)
+
+;; (require 'flymake-jslint)
+;; (add-hook 'js-mode-hook 'flymake-jslint-load)
