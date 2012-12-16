@@ -181,7 +181,7 @@ alias maxima="PATH='/home/cfy/perl5/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:/u
 # hash -d ptg="/usr/portage"
 # hash -d x="/etc/X11"
 # hash -d a="/home/ray/algo"
-# hash -d p="/home/ray/projects"
+hash -d p="$HOME/Undergraduate/graduate-project/sources/graduate-project/"
 # }}}1
 
 
