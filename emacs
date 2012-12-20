@@ -325,6 +325,7 @@
 ;; ;; don't show any of this                                                       
 ;; (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
 ;;; auto rejoin channel when being kicked
+(setq erc-server-auto-reconnect nil)
 (defun auto-rejoin(buffer)
   (let ((bn (buffer-name buffer)))
     (run-at-time "0.1 sec" nil
