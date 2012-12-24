@@ -238,9 +238,10 @@
 ;; copy from Tux in newsmth.net
 ;; http://dto.github.com/notebook/require-cl.html#sec-8
 ;; http://stackoverflow.com/questions/5019724/in-emacs-what-does-this-error-mean-warning-cl-package-required-at-runtime
+;; face-font-rescale-alist
 (eval-when-compile (require 'cl))
 (when window-system
-  (defun set-font (english chinese english-size chinese-size)
+  (defun set-font (english chinese english-size)
     (set-face-attribute 'default nil :font
 			(format "%s:pixelsize=%d" english english-size))
     (dolist (charset '(kana han symbol cjk-misc bopomofo))
@@ -251,9 +252,9 @@
     (gnu/linux
      (set-face-bold-p 'bold nil)
      (set-face-underline-p 'bold nil)
-     (set-font "monofur" "vera Sans YuanTi Mono" 20 20))
+     (set-font "monofur" "vera Sans YuanTi Mono" 20))
     (darwin
-     (set-font "monofur" "STHeiti" 20 20))))
+     (set-font "monofur" "STHeiti" 20))))
 
 ;;; easypg，emacs 自带
 (require 'epa-file)
@@ -385,7 +386,7 @@
 (erc-services-mode 1)
 (setq erc-prompt-for-nickserv-password nil)
 (load "~/.emacs-passwd")
-(setq erc-email-userid "cfy")
+(setq erc-email-userid "ilisp")
 (setq erc-autojoin-channels-alist
       '(("freenode.net"
 	 "#lisp-zh" "#ubuntu-cn"
@@ -823,28 +824,28 @@
        ,@body
        (- (float-time) ,start))))
 
-;; nodejs-mode
-(add-to-list 'load-path "~/.emacs.d/nodejs-mode/")
-(require 'nodejs-mode)
+;; ;; nodejs-mode
+;; (add-to-list 'load-path "~/.emacs.d/nodejs-mode/")
+;; (require 'nodejs-mode)
 
-;; lintnode
-(let ((lintnode-path "/Users/chenfengyuan/.emacs.d/lintnode/"))
-  (add-to-list 'load-path lintnode-path)
-  (require 'flymake-jslint)
-  ;; Make sure we can find the lintnode executable
-  (setq lintnode-location lintnode-path)
-  ;; JSLint can be... opinionated
-  (setq lintnode-jslint-excludes (list 'nomen 'undef 'plusplus 'onevar 'white))
-  ;; Start the server when we first open a js file and start checking
-  (when (fboundp 'lintnode-hook)
-    (add-hook 'js-mode-hook
-	      (lambda ()
-		(lintnode-hook)))
-    (add-hook 'js2-mode-hook
-	      (lambda ()
-		(lintnode-hook)))))
+;; ;; lintnode
+;; (let ((lintnode-path "/Users/chenfengyuan/.emacs.d/lintnode/"))
+;;   (add-to-list 'load-path lintnode-path)
+;;   (require 'flymake-jslint)
+;;   ;; Make sure we can find the lintnode executable
+;;   (setq lintnode-location lintnode-path)
+;;   ;; JSLint can be... opinionated
+;;   (setq lintnode-jslint-excludes (list 'nomen 'undef 'plusplus 'onevar 'white))
+;;   ;; Start the server when we first open a js file and start checking
+;;   (when (fboundp 'lintnode-hook)
+;;     (add-hook 'js-mode-hook
+;; 	      (lambda ()
+;; 		(lintnode-hook)))
+;;     (add-hook 'js2-mode-hook
+;; 	      (lambda ()
+;; 		(lintnode-hook)))))
 
-(require 'flymake-cursor)
+;; (require 'flymake-cursor)
 
-;; (require 'flymake-jslint)
-;; (add-hook 'js-mode-hook 'flymake-jslint-load)
+;; coffee-script
+(setq coffee-command "/usr/local/share/npm/bin/coffee")
