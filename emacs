@@ -390,7 +390,7 @@
 (setq erc-autojoin-channels-alist
       '(("freenode.net"
 	 "#lisp-zh" "#ubuntu-cn"
-	 "#emacs" "#mac" "#lisp" "#org-mode")))
+	 "#emacs" "#mac" "#lisp" "#org-mode" "#coffeescript" "#javascript")))
 (setq erc-autojoin-timing 'ident)
 (require 'tls)
 (defun erc-start ()
