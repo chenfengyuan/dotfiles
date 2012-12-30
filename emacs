@@ -326,7 +326,6 @@
 ;; ;; don't show any of this                                                       
 ;; (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
 ;;; auto rejoin channel when being kicked
-(setq erc-server-auto-reconnect nil)
 (defun auto-rejoin(buffer)
   (let ((bn (buffer-name buffer)))
     (run-at-time "0.1 sec" nil
@@ -849,3 +848,17 @@
 
 ;; coffee-script
 (setq coffee-command "/usr/local/share/npm/bin/coffee")
+
+;; copy from
+(defun uniquify-region-lines (beg end)
+  "Remove duplicate adjacent lines in region."
+  (interactive "*r")
+  (save-excursion
+    (goto-char beg)
+    (while (re-search-forward "^\\(.*\n\\)\\1+" end t)
+      (replace-match "\\1"))))
+
+(defun uniquify-buffer-lines ()
+  "Remove duplicate adjacent lines in the current buffer."
+  (interactive)
+  (uniquify-region-lines (point-min) (point-max)))
