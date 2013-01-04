@@ -426,7 +426,7 @@
 (add-to-list 'load-path "~/quicklisp/dists/quicklisp/software/slime-20121125-cvs/")
 (require 'slime)
 (slime-setup '(slime-fancy))
-(setq inferior-lisp-program "~/ccl/dx86cl64 -K utf-8"
+(setq inferior-lisp-program "ccl -K utf-8"
       slime-net-coding-system 'utf-8-unix
       common-lisp-hyperspec-root "/Users/chenfengyuan/Library/Application Support/Dash/DocSets/Common_Lisp/Common Lisp.docset/Contents/Resources/Documents/HyperSpec/HyperSpec/"
       lisp-simple-loop-indentation 1
@@ -862,3 +862,7 @@
   "Remove duplicate adjacent lines in the current buffer."
   (interactive)
   (uniquify-region-lines (point-min) (point-max)))
+
+;; opacity
+(set-frame-parameter (selected-frame) 'alpha '90)
+(add-to-list 'default-frame-alist '(alpha 90))
