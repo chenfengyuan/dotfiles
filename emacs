@@ -388,7 +388,7 @@
 (setq erc-email-userid "ilisp")
 (setq erc-autojoin-channels-alist
       '(("freenode.net"
-	 "#lisp-zh" "#ubuntu-cn"
+	 "#lisp-zh" "#ubuntu-cn" "#avplayer"
 	 "#emacs" "#mac" "#lisp" "#org-mode" "#coffeescript" "#javascript")))
 (setq erc-autojoin-timing 'ident)
 (require 'tls)
