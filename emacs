@@ -578,15 +578,16 @@
  '(js2-bounce-indent-p t)
  '(js2-enter-indents-newline t)
  '(js2-indent-on-enter-key t)
- '(org-agenda-files (quote ("~/Undergraduate/graduate-project/face-recognition.org" "~/orgs/birthday.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/todo.org")))
- '(org-capture-templates (quote (("g" "graduation project" entry (file+headline "~/orgs/gtd.org" "graduation project") "* TODO %?") ("t" "Todo" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?
-") ("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate") "* TODO %?
-") ("p" "Postgraduate entrance exam" entry (file+headline "~/orgs/gtd.org" "postgraduate entrance exam") "* TODO %?
-") ("n" "NTU" entry (file+headline "~/orgs/gtd.org" "NTU") "* TODO %?
-") ("f" "Film" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?[/] :film:
+ '(org-agenda-files (quote ("~/orgs/glority.org" "~/Undergraduate/graduate-project/face-recognition.org" "~/orgs/birthday.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/todo.org")))
+ '(org-capture-templates (quote (
+				 ("g" "glority" entry (file+headline "~/orgs/glority.org" "Tasks") "* TODO %?")
+				 ("t" "TODO" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?")
+				 ("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate") "* TODO %?
+")
+				 ("f" "Film" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?[/] :film:
 - [ ] download
 - [ ] watch
-- [ ] review"))) t)
+- [ ] review"))))
  '(org-enforce-todo-dependencies t)
  '(org-show-notification-handler (lambda (message) (notify "Org-mode" message))))
 
@@ -693,19 +694,6 @@
 
 ;;; org export beamer
 (require 'org-export-beamer)
-
-;;; org capture
-(setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/orgs/gtd.org" "Tasks")
-	 "* TODO %?\n")
-	("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate")
-	 "* TODO %?\n")
-	("p" "Postgraduate entrance exam" entry (file+headline "~/orgs/gtd.org" "postgraduate entrance exam")
-	 "* TODO %?\n")
-	("n" "NTU" entry (file+headline "~/orgs/gtd.org" "NTU")
-	 "* TODO %?\n")
-	("f" "Film" entry (file+headline "~/orgs/gtd.org" "Tasks")
-	 "* TODO %?[/] :film:\n- [ ] download\n- [ ] watch\n- [ ] review")))
 
 ;;; latex compile command
 (setq LaTeX-command "xelatex")
