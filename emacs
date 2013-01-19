@@ -644,6 +644,18 @@
     (while (re-search-forward "\\([^[:space:]]+\\)[[:space:]]+\\([^[:space:]]+\\)" nil t)
       (puthash (match-string-no-properties 1) (match-string-no-properties 2) *sh-nicks*))))
 (say-hello-build-nick-list)
+
+;; minimal distraction in erc track
+(defadvice erc-track-find-face (around erc-track-find-face-promote-query activate)
+  (if (erc-query-buffer-p)
+      (setq ad-return-value (intern "erc-current-nick-face"))
+    ad-do-it))
+(defadvice erc-track-modified-channels (around erc-track-modified-channels-promote-query activate)
+  (if (erc-query-buffer-p) (setq erc-track-priority-faces-only 'nil))
+  ad-do-it
+  (if (erc-query-buffer-p) (setq erc-track-priority-faces-only 'all)))
+(setq erc-track-faces-priority-list '(erc-current-nick-face erc-track-find-face))
+(setq erc-track-priority-faces-only 'all)
 ;; *** blez (blez@ip-162-4-71-77.varnalan.net) has joined channel #ubuntu
 ;; (add-hook 'erc-insert-post-hook 'say-hello)
 ;; (remove-hook 'erc-insert-post-hook 'auto-hello)
