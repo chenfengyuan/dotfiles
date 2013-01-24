@@ -1,7 +1,8 @@
 # -*- mode: shell-script;-*-
 export LANG=en_US.UTF-8
-export PATH=/usr/local/bin/:$HOME/.bin:~/perl5/bin:$PATH:/usr/local/share/npm/bin/
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin/:$HOME/.bin:~/perl5/bin:$PATH:/usr/local/share/npm/bin/
 export PERL5LIB=~/perl5/lib/perl5
+export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 # export PATH="/usr/lib/ccache/bin/:/usr/lib/distcc/bin/:${PATH}"
 # export INFOPATH=$INFOPATH:$HOME/info
 #关于历史纪录的配置 {{{
@@ -144,7 +145,7 @@ bindkey "\t" user-complete
 alias  cp='cp -i'
 alias  mv='mv -iv'
 alias  rm='rm -v'
-alias  ls='ls -G'
+alias  ls='ls --color -F'
 alias  ll="ls -G -l"
 alias  grep='grep --color=auto'
 alias  e="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n"
@@ -168,7 +169,7 @@ alias adb='/home/cfy/temp/android/android-sdk-linux_x86/platform-tools/adb'
 alias ss='/usr/bin/import -frame /dev/shm/screen-shot.jpg && opera /dev/shm/screen-shot.jpg'
 alias matlab='~/.local/MATLAB/R2011a/bin/matlab'
 alias sbcl="rlwrap sbcl"
-alias tar="gnutar --owner 0 --group 0"
+alias tar="tar --owner 0 --group 0"
 alias maxima="PATH='/home/cfy/perl5/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-bin/4.5.3:/usr/games/bin' rlwrap maxima"
 # alias ccl='/home/cfy/temp/ccl/lx86cl64'
 # alias ecl='/usr/lib/ecl/ecl-original'
