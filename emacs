@@ -578,13 +578,9 @@
  '(js2-bounce-indent-p t)
  '(js2-enter-indents-newline t)
  '(js2-indent-on-enter-key t)
- '(org-agenda-files (quote ("~/orgs/glority.org" "~/Undergraduate/graduate-project/face-recognition.org" "~/orgs/birthday.org" "~/orgs/notes.org" "~/orgs/gtd.org" "~/orgs/todo.org")))
- '(org-capture-templates (quote (
-				 ("g" "glority" entry (file+headline "~/orgs/glority.org" "Tasks") "* TODO %?")
-				 ("t" "TODO" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?")
-				 ("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate") "* TODO %?
-")
-				 ("f" "Film" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?[/] :film:
+ '(org-agenda-files (quote ("~/orgs/glority.org" "~/Undergraduate/graduate-project/face-recognition.org" "~/orgs/birthday.org" "~/orgs/notes.org" "~/orgs/gtd.org")))
+ '(org-capture-templates (quote (("g" "glority" entry (file+headline "~/orgs/glority.org" "Tasks") "* TODO %?") ("t" "TODO" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?") ("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate") "* TODO %?
+") ("f" "Film" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?[/] :film:
 - [ ] download
 - [ ] watch
 - [ ] review"))))
