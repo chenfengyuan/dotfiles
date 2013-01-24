@@ -35,7 +35,7 @@
     (require 'terminal-notifier))
 ;; swap command and option under os x
 (eval-when-compile (require 'cl))
-(when (and window-system (eq system-type 'darwin))
+(when (and (boundp 'mac-command-modifier) (boundp 'mac-option-modifier))
   (rotatef mac-command-modifier mac-option-modifier))
 
 ;;补全
