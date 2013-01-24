@@ -862,3 +862,7 @@
   "Remove duplicate adjacent lines in the current buffer."
   (interactive)
   (uniquify-region-lines (point-min) (point-max)))
+
+;; set default browser to opera
+(setq browse-url-generic-program "opera"
+      browse-url-browser-function 'browse-url-generic)
