@@ -3,7 +3,7 @@ if uname|grep -q Linux;then
     KERNEL=linux
 fi
 export LANG=en_US.UTF-8
-export PATH=/usr/local/bin/:$HOME/.bin:~/perl5/bin:$PATH:/usr/local/share/npm/bin/:/gensym/bin/
+export PATH=/usr/local/bin/:$HOME/.local/bin:$PATH:/usr/local/share/npm/bin/:/gensym/bin/
 export PERL5LIB=~/perl5/lib/perl5
 # export PATH="/usr/lib/ccache/bin/:/usr/lib/distcc/bin/:${PATH}"
 # export INFOPATH=$INFOPATH:$HOME/info
@@ -147,7 +147,7 @@ bindkey "\t" user-complete
 alias  cp='cp -i'
 alias  mv='mv -iv'
 alias  rm='rm -v'
-alias  ls='ls -G'
+alias  ls='ls --color -F'
 alias  ll="ls -G -l"
 alias  grep='grep --color=auto'
 alias  e="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n"
