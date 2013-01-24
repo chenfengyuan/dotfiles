@@ -266,7 +266,11 @@
 ;; 允许自动保存
 (setq epa-file-inhibit-auto-save nil)
 ;; epa只能用gnupg 1.0
-(setq epg-gpg-program "/usr/local/bin/gpg")
+(ecase system-type
+  (gnu/linux
+   (setq epg-gpg-program "gpg"))
+  (darwin
+   (setq epg-gpg-program "/usr/local/bin/gpg")))
 
 
 (global-set-key "\C-xm" 'browse-url-at-point)
