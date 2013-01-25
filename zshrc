@@ -150,7 +150,7 @@ alias  rm='rm -v'
 alias  ls='ls --color -F'
 alias  ll="ls -G -l"
 alias  grep='grep --color=auto'
-alias  e="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n"
+alias  e="emacsclient -n"
 alias  B='|sed -r "s:\x1B\[[0-9;]*[mK]::g"'
 alias  N="*(oc[1])"
 alias  wgetpaste='wgetpaste -s ca'
