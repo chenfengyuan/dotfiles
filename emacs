@@ -35,7 +35,7 @@
     (require 'terminal-notifier))
 ;; swap command and option under os x
 (eval-when-compile (require 'cl))
-(when (and window-system (eq system-type 'darwin))
+(when (and (boundp 'mac-command-modifier) (boundp 'mac-option-modifier))
   (rotatef mac-command-modifier mac-option-modifier))
 
 ;;补全
@@ -266,7 +266,11 @@
 ;; 允许自动保存
 (setq epa-file-inhibit-auto-save nil)
 ;; epa只能用gnupg 1.0
-(setq epg-gpg-program "/usr/local/bin/gpg")
+(ecase system-type
+  (gnu/linux
+   (setq epg-gpg-program "gpg"))
+  (darwin
+   (setq epg-gpg-program "/usr/local/bin/gpg")))
 
 
 (global-set-key "\C-xm" 'browse-url-at-point)
@@ -423,15 +427,24 @@
 ;;                                        ("oftc.net" "#debian"))))
 
 ;; (setq inferior-lisp-program "/usr/bin/sbcl")
-(add-to-list 'load-path "~/quicklisp/dists/quicklisp/software/slime-20121125-cvs/")
+(add-to-list 'load-path (car (last (directory-files "~/quicklisp/dists/quicklisp/software/" t "slime" t))))
 (require 'slime)
 (slime-setup '(slime-fancy))
-(setq inferior-lisp-program "ccl -K utf-8"
-      slime-net-coding-system 'utf-8-unix
-      common-lisp-hyperspec-root "/Users/chenfengyuan/Library/Application Support/Dash/DocSets/Common_Lisp/Common Lisp.docset/Contents/Resources/Documents/HyperSpec/HyperSpec/"
-      lisp-simple-loop-indentation 1
-      lisp-loop-keyword-indentation 6
-      lisp-loop-forms-indentation 6)
+(ecase system-type
+  (gnu/linux
+   (setq inferior-lisp-program "~/.local/bin/ccl -K utf-8"
+	 slime-net-coding-system 'utf-8-unix
+	 common-lisp-hyperspec-root (expand-file-name "~/.local/share/HyperSpec/")
+	 lisp-simple-loop-indentation 1
+	 lisp-loop-keyword-indentation 6
+	 lisp-loop-forms-indentation 6))
+  (darwin
+   (setq inferior-lisp-program "ccl -K utf-8"
+	 slime-net-coding-system 'utf-8-unix
+	 common-lisp-hyperspec-root "/Users/chenfengyuan/Library/Application Support/Dash/DocSets/Common_Lisp/Common Lisp.docset/Contents/Resources/Documents/HyperSpec/HyperSpec/"
+	 lisp-simple-loop-indentation 1
+	 lisp-loop-keyword-indentation 6
+	 lisp-loop-forms-indentation 6)))
 
 
 ;; (autoload 'dictionary-search "dictionary"
@@ -469,9 +482,15 @@
 
 
 ;; ccl
-(defun ccl()
-  (interactive)
-  (slime-start* '(:name "ccl" :program "ccl" :program-args ("-K" "utf-8"))))
+(ecase system-type
+  (gnu/linux
+   (defun ccl()
+     (interactive)
+     (slime-start* '(:name "ccl" :program "~/.local/bin/ccl" :program-args ("-K" "utf-8")))))
+  (darwin
+   (defun ccl()
+     (interactive)
+     (slime-start* '(:name "ccl" :program "ccl" :program-args ("-K" "utf-8"))))))
 
 ;;; sbcl
 (defun sbcl()
@@ -578,7 +597,7 @@
  '(js2-bounce-indent-p t)
  '(js2-enter-indents-newline t)
  '(js2-indent-on-enter-key t)
- '(org-agenda-files (quote ("~/orgs/glority.org" "~/Undergraduate/graduate-project/face-recognition.org" "~/orgs/birthday.org" "~/orgs/notes.org" "~/orgs/gtd.org")))
+ '(org-agenda-files (quote ("~/orgs/glority.org" "~/orgs/birthday.org" "~/orgs/notes.org" "~/orgs/gtd.org")))
  '(org-capture-templates (quote (("g" "glority" entry (file+headline "~/orgs/glority.org" "Tasks") "* TODO %?") ("t" "TODO" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?") ("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate") "* TODO %?
 ") ("f" "Film" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?[/] :film:
 - [ ] download
@@ -747,7 +766,7 @@
 ;; imaxima
 (add-to-list 'exec-path "/usr/texbin/")
 (add-to-list 'exec-path "/usr/local/bin")
-(setenv "PATH" "/Users/chenfengyuan/.bin:/Users/chenfengyuan/perl5/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/texbin")
+(setenv "PATH" (expand-file-name "~/.local/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/texbin"))
 (add-to-list 'load-path "/usr/local/Cellar/maxima/5.28.0/share/maxima/5.28.0/emacs")
 (autoload 'maxima-mode "maxima" "Maxima mode" t)
 (autoload 'imaxima "imaxima" "Frontend for maxima with Image support" t)
@@ -861,3 +880,7 @@
 
 ;; powerline
 (powerline-default)
+
+;; set default browser to opera
+(setq browse-url-generic-program "opera"
+      browse-url-browser-function 'browse-url-generic)

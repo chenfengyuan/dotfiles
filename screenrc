@@ -1,0 +1,11 @@
+
+escape ^L^L
+
+
+termcapinfo xterm*|rxvt*|kterm*|Eterm* ti@:te@ 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+defhstatus "screen ^E (^Et) | $USER@^EH"
+hardstatus off
+startup_message off
+
+#shell -/bin/bash
+shell -/bin/zsh

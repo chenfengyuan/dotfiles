@@ -1,6 +1,13 @@
 # -*- mode: shell-script;-*-
+KERNEL=`uname -s|tr 'A-Z' 'a-z'`
 export LANG=en_US.UTF-8
-export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin/:$HOME/.bin:~/perl5/bin:$PATH:/usr/local/share/npm/bin/
+
+case $KERNEL in
+    "darwin")
+	export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin/:$HOME/.bin:~/perl5/bin:$PATH:/usr/local/share/npm/bin/;;
+    "linux")
+	export PATH=/usr/local/bin/:$HOME/.local/bin:$PATH:/usr/local/share/npm/bin/:/gensym/bin/;;
+esac
 export PERL5LIB=~/perl5/lib/perl5
 export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:/usr/local/share/man/:$MANPATH
 # export PATH="/usr/lib/ccache/bin/:/usr/lib/distcc/bin/:${PATH}"
@@ -148,7 +155,7 @@ alias  rm='rm -v'
 alias  ls='ls --color -F'
 alias  ll="ls -G -l"
 alias  grep='grep --color=auto'
-alias  e="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n"
+alias  e="emacsclient -n"
 alias  B='|sed -r "s:\x1B\[[0-9;]*[mK]::g"'
 alias  N="*(oc[1])"
 alias  wgetpaste='wgetpaste -s ca'
