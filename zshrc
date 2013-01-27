@@ -2,7 +2,7 @@
 export LANG=en_US.UTF-8
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin/:$HOME/.bin:~/perl5/bin:$PATH:/usr/local/share/npm/bin/
 export PERL5LIB=~/perl5/lib/perl5
-export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
+export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:/usr/local/share/man/:$MANPATH
 # export PATH="/usr/lib/ccache/bin/:/usr/lib/distcc/bin/:${PATH}"
 # export INFOPATH=$INFOPATH:$HOME/info
 #关于历史纪录的配置 {{{
