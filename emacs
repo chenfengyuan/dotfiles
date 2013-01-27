@@ -858,3 +858,6 @@
   "Remove duplicate adjacent lines in the current buffer."
   (interactive)
   (uniquify-region-lines (point-min) (point-max)))
+
+;; powerline
+(powerline-default)
