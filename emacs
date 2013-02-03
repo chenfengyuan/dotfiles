@@ -882,5 +882,6 @@
 (powerline-default)
 
 ;; set default browser to opera
-(setq browse-url-generic-program "opera"
-      browse-url-browser-function 'browse-url-generic)
+(when (eq system-type 'gnu/linux)
+  (setq browse-url-generic-program "opera"
+	browse-url-browser-function 'browse-url-generic))
