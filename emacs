@@ -495,7 +495,7 @@
 ;;; sbcl
 (defun sbcl()
   (interactive)
-  (slime-start* '(:name "sbcl" :program "/usr/local/bin/sbcl" :program-args ("--no-sysinit"))))
+  (slime-start* '(:name "sbcl" :program "~/.local/bin/sbcl" :program-args ("--no-sysinit"))))
 
 ;;; allgero cl
 (defun acl()
