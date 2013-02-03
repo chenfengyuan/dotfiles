@@ -169,7 +169,6 @@ alias gpg='DISPLAY="" gpg'
 alias sudomount='sudo /bin/mount -o loop -t squashfs'
 alias umount='sudo umount'
 alias lsmac="/sbin/ifconfig -a | sed '/eth\|wl/!d;s/ Link.*HWaddr//'"
-idcheck_cfy(){perl -le '@a=split //,lc@ARGV[0];@b=split //,lc"79a584216379a5842";$s+=$a[$_]*hex $b[$_] for (0..$#a);$c=((12-($s%11))%11==10?"x":(12-($s%11))%11);unless(@a==18){print $c}else{print +($c eq $a[$#a])?"y":"n"}' $1}
 alias rsync='rsync --progress --partial'
 alias po2db=~'/gits/po2db/po2db.pl'
 alias adb='/home/cfy/temp/android/android-sdk-linux_x86/platform-tools/adb'
@@ -261,4 +260,10 @@ export LESSOPEN='|lesspipe %s'
 _force_rehash() {
     (( CURRENT == 1 )) && rehash
     return 1    # Because we did not really complete anything
+}
+
+# user defined functions
+idcheck_cfy(){perl -le '@a=split //,lc@ARGV[0];@b=split //,lc"79a584216379a5842";$s+=$a[$_]*hex $b[$_] for (0..$#a);$c=((12-($s%11))%11==10?"x":(12-($s%11))%11);unless(@a==18){print $c}else{print +($c eq $a[$#a])?"y":"n"}' $1}
+browse(){
+    e -e "(browse-url \"$1\")"
 }
