@@ -396,7 +396,7 @@
 (setq erc-autojoin-channels-alist
       '(("freenode.net"
 	 "#lisp-zh" "#ubuntu-cn" "#avplayer"
-	 "#emacs" "#lisp")))
+	 "#emacs" "#lisp" "#ccl")))
 (setq erc-autojoin-timing 'ident)
 (require 'tls)
 (defun erc-start ()
@@ -522,7 +522,7 @@
 ;; (erc-start)
 (require 'ielm)
 (require 'paredit)
-(dolist (mode-map `(,slime-mode-map ,emacs-lisp-mode-map))
+(dolist (mode-map `(,slime-mode-map))
   (define-key mode-map (kbd "TAB") 'slime-indent-and-complete-symbol)
   (define-key mode-map (kbd "C-c TAB") 'slime-complete-form))
 (dolist (mode-map `(,slime-mode-map ,emacs-lisp-mode-map ,lisp-interaction-mode-map ,ielm-map))
@@ -888,3 +888,75 @@
 (when (eq system-type 'gnu/linux)
   (setq browse-url-generic-program "opera"
 	browse-url-browser-function 'browse-url-generic))
+
+;; el-get
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (let (el-get-master-branch)
+      (goto-char (point-max))
+      (eval-print-last-sexp))))
+
+(el-get 'sync)
+
+;; windmove
+(require 'windmove)
+(windmove-default-keybindings 'meta)
+;; (windmove-default-keybindings 'super)
+;; (windmove-default-keybindings 'alte)
+
+(setq hippie-expand-try-functions-list
+      '(yas-hippie-try-expand
+        try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill
+        try-complete-file-name
+        try-complete-lisp-symbol))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Smart Tab
+;; Borrowed from snippets at
+;; http://www.emacswiki.org/emacs/TabCompletion
+;; TODO: Take a look at https://github.com/genehack/smart-tab
+
+(defvar smart-tab-using-hippie-expand t
+  "turn this on if you want to use hippie-expand completion.")
+
+(defun smart-tab (prefix)
+  "Needs `transient-mark-mode' to be on. This smart tab is
+  minibuffer compliant: it acts as usual in the minibuffer.
+
+  In all other buffers: if PREFIX is \\[universal-argument], calls
+  `smart-indent'. Else if point is at the end of a symbol,
+  expands it. Else calls `smart-indent'."
+  (interactive "P")
+  (labels ((smart-tab-must-expand (&optional prefix)
+                                  (unless (or (consp prefix)
+                                              mark-active)
+                                    (looking-at "\\_>"))))
+    (cond ((minibufferp)
+           (minibuffer-complete))
+          ((smart-tab-must-expand prefix)
+           (if smart-tab-using-hippie-expand
+               (hippie-expand prefix)
+             (dabbrev-expand prefix)))
+          ((smart-indent)))))
+
+(defun smart-indent ()
+  "Indents region if mark is active, or current line otherwise."
+  (interactive)
+  (if mark-active
+    (indent-region (region-beginning)
+                   (region-end))
+    (indent-for-tab-command)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(global-set-key (kbd "TAB") 'smart-tab)
+
+(defun host&date ()
+  (interactive)
+  (insert system-name)
+  (insert " ")
+  (insert (shell-command-to-string "date")))
