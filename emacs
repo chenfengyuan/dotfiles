@@ -132,7 +132,10 @@
 (eval-when-compile (require 'cl))
 (require 'ido)
 (if window-system
-    (ido-mode t)
+    (progn
+      (ido-mode t)
+      (setq ido-enable-flex-matching t)
+      (setq ido-enable-last-directory-history nil))
   (iswitchb-mode))
 ;; (add-to-list 'load-path "~/.emacs.d/elpa/ido-better-flex-0.0.2")
 ;; (require 'ido-better-flex)
@@ -393,7 +396,7 @@
 (setq erc-autojoin-channels-alist
       '(("freenode.net"
 	 "#lisp-zh" "#ubuntu-cn" "#avplayer"
-	 "#emacs" "##mac" "#lisp" "#org-mode" "#coffeescript" "##javascript")))
+	 "#emacs" "#lisp")))
 (setq erc-autojoin-timing 'ident)
 (require 'tls)
 (defun erc-start ()
@@ -495,7 +498,7 @@
 ;;; sbcl
 (defun sbcl()
   (interactive)
-  (slime-start* '(:name "sbcl" :program "/usr/local/bin/sbcl" :program-args ("--no-sysinit"))))
+  (slime-start* '(:name "sbcl" :program "~/.local/bin/sbcl" :program-args ("--no-sysinit"))))
 
 ;;; allgero cl
 (defun acl()
@@ -661,6 +664,9 @@
     (while (re-search-forward "\\([^[:space:]]+\\)[[:space:]]+\\([^[:space:]]+\\)" nil t)
       (puthash (match-string-no-properties 1) (match-string-no-properties 2) *sh-nicks*))))
 (say-hello-build-nick-list)
+;; *** blez (blez@ip-162-4-71-77.varnalan.net) has joined channel #ubuntu
+;; (add-hook 'erc-insert-post-hook 'say-hello)
+;; (remove-hook 'erc-insert-post-hook 'auto-hello)
 
 ;; minimal distraction in erc track
 (defadvice erc-track-find-face (around erc-track-find-face-promote-query activate)
@@ -673,9 +679,6 @@
   (if (erc-query-buffer-p) (setq erc-track-priority-faces-only 'all)))
 (setq erc-track-faces-priority-list '(erc-current-nick-face erc-track-find-face))
 (setq erc-track-priority-faces-only 'all)
-;; *** blez (blez@ip-162-4-71-77.varnalan.net) has joined channel #ubuntu
-;; (add-hook 'erc-insert-post-hook 'say-hello)
-;; (remove-hook 'erc-insert-post-hook 'auto-hello)
 
 ;;; Auto byte-compile
 ;;; copy from http://xahlee.org/emacs/organize_your_dot_emacs.html
@@ -897,5 +900,5 @@
       (eval-print-last-sexp))))
 (el-get 'sync)
 
-(if (string-equal= system-name "gensym-64")
+(if (string-equal system-name "gensym-64")
     (load "g2"))
