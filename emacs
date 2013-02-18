@@ -901,4 +901,4 @@
 (el-get 'sync)
 
 (if (string-equal system-name "gensym-64")
-    (load "g2"))
+    (load "~/.g2-init.el"))
