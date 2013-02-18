@@ -427,7 +427,7 @@
 ;;                                        ("oftc.net" "#debian"))))
 
 ;; (setq inferior-lisp-program "/usr/bin/sbcl")
-(add-to-list 'load-path (car (last (directory-files "~/quicklisp/dists/quicklisp/software/" t "slime" t))))
+(add-to-list 'load-path (car (last (sort (directory-files "~/quicklisp/dists/quicklisp/software/" t "slime") 'string<))))
 (require 'slime)
 (slime-setup '(slime-fancy))
 (ecase system-type
@@ -604,7 +604,8 @@
 - [ ] watch
 - [ ] review"))))
  '(org-enforce-todo-dependencies t)
- '(org-show-notification-handler (lambda (message) (notify "Org-mode" message))))
+ '(org-show-notification-handler (lambda (message) (notify "Org-mode" message)))
+ '(safe-local-variable-values (quote ((encoding . utf-8) (Syntax . COMMON-LISP) (Package . CCL) (Syntax . Common-lisp) (Syntax . Common-Lisp) (Base . 10) (Package . AB)))))
 
 ;; ;;; fast-paren-mode
 ;; (require 'fast-paren-mode)
@@ -884,3 +885,17 @@
 ;; set default browser to opera
 (setq browse-url-generic-program "opera"
       browse-url-browser-function 'browse-url-generic)
+
+;; el-get
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (let (el-get-master-branch)
+      (goto-char (point-max))
+      (eval-print-last-sexp))))
+(el-get 'sync)
+
+(if (string-equal= system-name "gensym-64")
+    (load "g2"))
