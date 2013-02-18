@@ -430,7 +430,7 @@
 ;;                                        ("oftc.net" "#debian"))))
 
 ;; (setq inferior-lisp-program "/usr/bin/sbcl")
-(add-to-list 'load-path (car (last (directory-files "~/quicklisp/dists/quicklisp/software/" t "slime" t))))
+(add-to-list 'load-path (car (last (sort (directory-files "~/quicklisp/dists/quicklisp/software/" t "slime") 'string<))))
 (require 'slime)
 (slime-setup '(slime-fancy))
 (ecase system-type
@@ -886,13 +886,11 @@
 (powerline-default)
 
 ;; set default browser to opera
-(when (eq system-type 'gnu/linux)
-  (setq browse-url-generic-program "opera"
-	browse-url-browser-function 'browse-url-generic))
+(setq browse-url-generic-program "opera"
+      browse-url-browser-function 'browse-url-generic)
 
 ;; el-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
@@ -900,7 +898,6 @@
     (let (el-get-master-branch)
       (goto-char (point-max))
       (eval-print-last-sexp))))
-
 (el-get 'sync)
 
 ;; windmove
@@ -961,3 +958,6 @@
   (insert system-name)
   (insert " ")
   (insert (shell-command-to-string "date")))
+
+(if (string-equal system-name "gensym-64")
+    (load "~/.g2-init.el"))
