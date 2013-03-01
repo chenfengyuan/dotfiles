@@ -886,8 +886,8 @@
 (powerline-default)
 
 ;; set default browser to opera
-(setq browse-url-generic-program "opera"
-      browse-url-browser-function 'browse-url-generic)
+(setq browse-url-generic-program nil
+      browse-url-browser-function 'browse-url-default-browser)
 
 ;; el-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -961,3 +961,7 @@
 
 (if (string-equal system-name "gensym-64")
     (load "~/.g2-init.el"))
+
+;; Personal information
+(setq user-full-name "Fengyuan Chen"
+      user-mail-address "jeova.sanctus.unus@gmail.com")
