@@ -689,9 +689,6 @@
     (byte-compile-file buffer-file-name)))
 (add-hook 'after-save-hook 'auto-recompile-el-buffer)
 
-;;; face
-(set-background-color "honeydew")
-
 ;;; display time and load level
 ;; (display-time)
 
@@ -899,6 +896,10 @@
       (goto-char (point-max))
       (eval-print-last-sexp))))
 (el-get 'sync)
+
+;;; color-theme
+(require 'color-theme)
+(color-theme-chocolate-rain)
 
 ;; windmove
 (require 'windmove)
