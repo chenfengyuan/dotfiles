@@ -899,7 +899,7 @@
 
 ;;; color-theme
 (require 'color-theme)
-(color-theme-chocolate-rain)
+(color-theme-tangotango)
 
 ;; windmove
 (require 'windmove)
