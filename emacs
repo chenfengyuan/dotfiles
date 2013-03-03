@@ -9,7 +9,7 @@
 	   (add-to-list 'package-archives
 			'("marmalade" . "http://marmalade-repo.org/packages/") t)
 	   (add-to-list 'package-archives
-              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+			'("melpa" . "http://melpa.milkbox.net/packages/") t)
 	   (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)))
 (eval-when-compile
   (require 'dired))
@@ -946,8 +946,8 @@
   "Indents region if mark is active, or current line otherwise."
   (interactive)
   (if mark-active
-    (indent-region (region-beginning)
-                   (region-end))
+      (indent-region (region-beginning)
+		     (region-end))
     (indent-for-tab-command)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
