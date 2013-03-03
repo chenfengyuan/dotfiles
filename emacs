@@ -983,3 +983,9 @@
       (error (message "Invalid expression")
 	     (insert (current-kill 0))))))
 (global-set-key (kbd "C-c C-e") 'eval-and-replace)
+
+;; erc-highlight-nicknames
+(and
+ (require 'erc-highlight-nicknames)
+ (add-to-list 'erc-modules 'highlight-nicknames)
+ (erc-update-modules))
