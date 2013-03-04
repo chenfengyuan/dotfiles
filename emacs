@@ -883,7 +883,11 @@
   (uniquify-region-lines (point-min) (point-max)))
 
 ;; powerline
-(powerline-default)
+(ecase system-type
+  (gnu/linux)
+  (darwin
+   (powerline-default)))
+
 
 ;; set default browser to opera
 (setq browse-url-generic-program "opera"
