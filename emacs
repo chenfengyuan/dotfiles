@@ -9,7 +9,7 @@
 	   (add-to-list 'package-archives
 			'("marmalade" . "http://marmalade-repo.org/packages/") t)
 	   (add-to-list 'package-archives
-              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+			'("melpa" . "http://melpa.milkbox.net/packages/") t)
 	   (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)))
 (eval-when-compile
   (require 'dired))
@@ -689,9 +689,6 @@
     (byte-compile-file buffer-file-name)))
 (add-hook 'after-save-hook 'auto-recompile-el-buffer)
 
-;;; face
-(set-background-color "honeydew")
-
 ;;; display time and load level
 ;; (display-time)
 
@@ -890,8 +887,8 @@
 
 
 ;; set default browser to opera
-(setq browse-url-generic-program "opera"
-      browse-url-browser-function 'browse-url-generic)
+(setq browse-url-generic-program nil
+      browse-url-browser-function 'browse-url-default-browser)
 
 ;; el-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -903,6 +900,10 @@
       (goto-char (point-max))
       (eval-print-last-sexp))))
 (el-get 'sync)
+
+;;; color-theme
+(require 'color-theme)
+(color-theme-tangotango)
 
 ;; windmove
 (require 'windmove)
@@ -950,8 +951,8 @@
   "Indents region if mark is active, or current line otherwise."
   (interactive)
   (if mark-active
-    (indent-region (region-beginning)
-                   (region-end))
+      (indent-region (region-beginning)
+		     (region-end))
     (indent-for-tab-command)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -965,3 +966,30 @@
 
 (if (string-equal system-name "gensym-64")
     (load "~/.g2-init.el"))
+
+;; Personal information
+(setq user-full-name "Fengyuan Chen"
+      user-mail-address "jeova.sanctus.unus@gmail.com")
+(require 'multiple-cursors)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-*") 'mc/mark-all-like-this)
+
+;; https://github.com/magnars/.emacs.d/blob/master/defuns/lisp-defuns.el
+(defun eval-and-replace ()
+  "Replace the preceding sexp with its value."
+  (interactive)
+  (progn
+    (backward-kill-sexp)
+    (condition-case nil
+	(prin1 (eval (read (current-kill 0)))
+	       (current-buffer))
+      (error (message "Invalid expression")
+	     (insert (current-kill 0))))))
+(global-set-key (kbd "C-c C-e") 'eval-and-replace)
+
+;; erc-highlight-nicknames
+(and
+ (require 'erc-highlight-nicknames)
+ (add-to-list 'erc-modules 'highlight-nicknames)
+ (erc-update-modules))
