@@ -267,3 +267,6 @@ idcheck_cfy(){perl -le '@a=split //,lc@ARGV[0];@b=split //,lc"79a584216379a5842"
 browse(){
     e -e "(browse-url \"$1\")"
 }
+
+# LS_COLORS
+eval `dircolors`
