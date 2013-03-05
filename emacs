@@ -313,7 +313,8 @@
 (add-hook 'org-mode-hook
 	  (lambda () (setq truncate-lines nil)))
 (add-hook 'org-mode-hook
-	  (lambda () (auto-revert-mode)))
+	  (lambda ()
+	    (auto-revert-mode)))
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-refile-targets '(("gtd.org" :maxlevel . 1)))
 (require 'org-film)
