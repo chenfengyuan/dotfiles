@@ -934,12 +934,15 @@
   `smart-indent'. Else if point is at the end of a symbol,
   expands it. Else calls `smart-indent'."
   (interactive "P")
-  (labels ((smart-tab-must-expand (&optional prefix)
+  (cl-labels ((smart-tab-must-expand (&optional prefix)
                                   (unless (or (consp prefix)
                                               mark-active)
                                     (looking-at "\\_>"))))
     (cond ((minibufferp)
            (minibuffer-complete))
+	  ((eq major-mode 'lua-mode)
+	   (smart-indent)
+	   (auto-complete))
           ((smart-tab-must-expand prefix)
            (if smart-tab-using-hippie-expand
                (hippie-expand prefix)
@@ -983,3 +986,5 @@
       (error (message "Invalid expression")
 	     (insert (current-kill 0))))))
 (global-set-key (kbd "C-c C-e") 'eval-and-replace)
+(eval-after-load "lua-mode"
+  '(define-key lua-mode-map (kbd "TAB") 'smart-tab))
