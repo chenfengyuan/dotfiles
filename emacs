@@ -791,7 +791,7 @@
 ;; auto-complete-clang
 (require 'yasnippet)
 (pop yas-snippet-dirs)
-(yas-global-mode)
+;; (yas-global-mode)
 (require 'auto-complete-clang)
 (defun my-ac-config ()
   (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))
