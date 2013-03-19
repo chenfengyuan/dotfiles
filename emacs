@@ -602,7 +602,7 @@
  '(js2-enter-indents-newline t)
  '(js2-indent-on-enter-key t)
  '(org-agenda-files (quote ("~/orgs/birthday.org" "~/orgs/notes.org" "~/orgs/gtd.org")))
- '(org-capture-templates (quote (("g" "glority" entry (file+headline "~/orgs/glority.org" "Tasks") "* TODO %?") ("t" "TODO" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?") ("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate") "* TODO %?
+ '(org-capture-templates (quote (("t" "TODO" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?") ("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate") "* TODO %?
 ") ("f" "Film" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?[/] :film:
 - [ ] download
 - [ ] watch
