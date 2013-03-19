@@ -1,6 +1,7 @@
 					; -*- mode: emacs-lisp;-*-
 ;;chenfengyuan
 
+(require 'cl-lib)
 ;;; for compile
 ;;; elpa
 (package-initialize)
@@ -34,9 +35,8 @@
 (if (eq system-type 'darwin)
     (require 'terminal-notifier))
 ;; swap command and option under os x
-(eval-when-compile (require 'cl))
 (when (and (boundp 'mac-command-modifier) (boundp 'mac-option-modifier))
-  (rotatef mac-command-modifier mac-option-modifier))
+  (cl-rotatef mac-command-modifier mac-option-modifier))
 
 ;;补全
 ;;在auto-complete不能不全的地方使用
@@ -129,7 +129,6 @@
 
 
 ;;; ido
-(eval-when-compile (require 'cl))
 (require 'ido)
 (if window-system
     (progn
@@ -153,7 +152,7 @@
 (add-hook 'emacs-lisp-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-symbols)))
 (add-hook 'auto-complete-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-filename)))
 (set-face-background 'ac-candidate-face "lightgray")
-(set-face-underline-p 'ac-candidate-face "darkgray")
+(set-face-underline 'ac-candidate-face "darkgray")
 (set-face-background 'ac-selection-face "steelblue")
 (define-key ac-completing-map "\M-n" 'ac-next)
 (define-key ac-completing-map "\M-p" 'ac-previous)
@@ -222,9 +221,10 @@
  )
 
 ;; (cperl-set-style 'PerlStyle)
+(require 'cperl-mode)
 (add-hook 'cperl-mode-hook 'cperl-mode-hook t)
-;; (defun cperl-mode-hook()
-;;   (cperl-set-style "PerlStyle"))
+(defun cperl-mode-hook()
+  (cperl-set-style "PerlStyle"))
 ;; cperl indent
 (setq cperl-auto-newline t)
 (setq cperl-electric-paren t)
@@ -242,19 +242,18 @@
 ;; http://dto.github.com/notebook/require-cl.html#sec-8
 ;; http://stackoverflow.com/questions/5019724/in-emacs-what-does-this-error-mean-warning-cl-package-required-at-runtime
 ;; face-font-rescale-alist
-(eval-when-compile (require 'cl))
 (when window-system
   (defun set-font (english chinese english-size)
     (set-face-attribute 'default nil :font
 			(format "%s:pixelsize=%d" english english-size))
-    (dolist (charset '(kana han symbol cjk-misc bopomofo))
+    (cl-dolist (charset '(kana han symbol cjk-misc bopomofo))
       (set-fontset-font t charset
 			(font-spec :family chinese))))
 
-  (ecase system-type
+  (cl-ecase system-type
     (gnu/linux
      (set-face-bold-p 'bold nil)
-     (set-face-underline-p 'bold nil)
+     (set-face-underline 'bold nil)
      (set-font "monofur" "vera Sans YuanTi Mono" 20))
     (darwin
      (set-font "monofur" "STHeiti" 20))))
