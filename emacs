@@ -394,7 +394,7 @@
 (erc-services-mode 1)
 (setq erc-prompt-for-nickserv-password nil)
 (load "~/.emacs-passwd")
-(setq erc-email-userid "ilisp")
+(setq erc-email-userid "Vincent")
 (setq erc-autojoin-channels-alist
       '(("freenode.net"
 	 "#ubuntu-cn")))
