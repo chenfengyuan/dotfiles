@@ -602,11 +602,14 @@
  '(js2-enter-indents-newline t)
  '(js2-indent-on-enter-key t)
  '(org-agenda-files (quote ("~/orgs/birthday.org" "~/orgs/notes.org" "~/orgs/gtd.org")))
- '(org-capture-templates (quote (("t" "TODO" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?") ("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate") "* TODO %?
-") ("f" "Film" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?[/] :film:
+ '(org-capture-templates '(("t" "TODO" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?")
+			   ("u" "Undergraduate" entry (file+headline "~/orgs/gtd.org" "Undergraduate") "* TODO %?
+")
+			   ("f" "Film" entry (file+headline "~/orgs/gtd.org" "Tasks") "* TODO %?[/] :film:
 - [ ] download
 - [ ] watch
-- [ ] review"))))
+- [ ] review")
+			   ("a" "appwill" entry (file+headline "~/orgs/gtd.org" "appwill") "* TODO %?")))
  '(org-enforce-todo-dependencies t)
  '(org-show-notification-handler (lambda (message) (notify "Org-mode" message)))
  '(safe-local-variable-values (quote ((eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook" (add-hook (quote write-contents-functions) (lambda nil (delete-trailing-whitespace) nil)) (require (quote whitespace)) "Sometimes the mode needs to be toggled off and on." (whitespace-mode 0) (whitespace-mode 1)) (whitespace-line-column . 80) (whitespace-style face trailing lines-tail) (require-final-newline . t)))))
