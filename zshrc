@@ -1,4 +1,9 @@
 # -*- mode: shell-script;-*-
+#设置OpenResty环境变量
+export OPENRESTY_HOME=/Users/chenfengyuan/appwill/openresty/
+
+#设置Moochine环境变量
+export MOOCHINE_HOME=/USers/chenfengyuan/appwill/moochine
 KERNEL=`uname -s|tr 'A-Z' 'a-z'`
 export LANG=en_US.UTF-8
 
