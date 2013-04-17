@@ -154,6 +154,8 @@ bindkey "\t" user-complete
 # #}}}
 
 # {{{1 command aliases
+alias luvit='~/appwill/public/luvit/build/luvit'
+alias luajit='rlwrap luajit'
 alias  cp='cp -i'
 alias  mv='mv -iv'
 alias  rm='rm -v'
