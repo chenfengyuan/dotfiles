@@ -3,7 +3,10 @@
 export OPENRESTY_HOME=/Users/chenfengyuan/appwill/openresty/
 
 #设置Moochine环境变量
-export MOOCHINE_HOME=/USers/chenfengyuan/appwill/moochine
+export MOOCHINE_HOME=/Users/chenfengyuan/appwill/moochine
+
+#设置Haddit环境变量
+export HADDIT_HOME=/Users/chenfengyuan/appwill/private/haddit
 KERNEL=`uname -s|tr 'A-Z' 'a-z'`
 export LANG=en_US.UTF-8
 
@@ -184,6 +187,7 @@ alias matlab='~/.local/MATLAB/R2011a/bin/matlab'
 alias sbcl="rlwrap sbcl"
 alias tar="tar --owner 0 --group 0"
 alias maxima="PATH='/home/cfy/perl5/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-bin/4.5.3:/usr/games/bin' rlwrap maxima"
+alias git_br_d_all='git co master && git branch --merged | grep -v "\*" |grep -v "master"| while read i;do git branch -d $i;git push origin :$i;done'
 # alias ccl='/home/cfy/temp/ccl/lx86cl64'
 # alias ecl='/usr/lib/ecl/ecl-original'
 # }}}1
@@ -196,6 +200,7 @@ alias maxima="PATH='/home/cfy/perl5/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:/u
 # hash -d x="/etc/X11"
 # hash -d a="/home/ray/algo"
 hash -d p="$HOME/Undergraduate/graduate-project/sources/graduate-project/"
+hash -d a="$HOME/appwill/private/"
 # }}}1
 
 
