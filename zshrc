@@ -12,7 +12,7 @@ export LANG=en_US.UTF-8
 
 case $KERNEL in
     "darwin")
-	export PATH=$HOME/.local/clang+llvm-3.3-x86_64-apple-darwin12/bin:$HOME/.local/bin:/usr/local/sbin:/Applications/Emacs.app/Contents/MacOS/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:$HOME/.bin:~/perl5/bin:$PATH:/usr/local/share/npm/bin;;
+	export PATH=$HOME/.local/clang/bin:$HOME/.local/bin:/usr/local/sbin:/Applications/Emacs.app/Contents/MacOS/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:$HOME/.bin:~/perl5/bin:$PATH:/usr/local/share/npm/bin;;
     "linux")
 	export PATH=/usr/local/bin/:$HOME/.local/bin:$PATH:/usr/local/share/npm/bin/:/gensym/bin/;;
 esac
