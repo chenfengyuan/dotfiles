@@ -282,7 +282,8 @@
 (blink-cursor-mode -1)
 
 ;;emacs server
-(server-start)
+(unless (boundp 'batch-mode)
+  (server-start))
 
 ;;; turn off tool bar
 ;; (menu-bar-mode -1)
