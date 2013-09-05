@@ -188,6 +188,7 @@ alias sbcl="rlwrap sbcl"
 alias tar="tar --owner 0 --group 0"
 alias maxima="PATH='/home/cfy/perl5/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-bin/4.5.3:/usr/games/bin' rlwrap maxima"
 alias git_br_d_all='git co master && git branch --merged | grep -v "\*" |grep -v "master"| while read i;do git branch -d $i;git push origin :$i;done'
+alias sublimetext='( /Applications/Sublime\ Text\ 2.app/Contents/MacOS/Sublime\ Text\ 2 &)'
 # alias ccl='/home/cfy/temp/ccl/lx86cl64'
 # alias ecl='/usr/lib/ecl/ecl-original'
 # }}}1
